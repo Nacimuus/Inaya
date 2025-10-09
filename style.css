@@ -461,9 +461,9 @@
 /* ✨ Page backgrounds */
 body[data-bg="main"] {
   background: linear-gradient(180deg,
-    rgb(211, 183, 141) 0%,
-    rgb(202, 182, 154) 40%,
-    rgb(32, 17, 1) 100%);
+    rgb(225, 113, 133) 0%,
+    rgb(192, 51, 51) 40%,
+    rgb(69, 36, 36) 100%);
 }
 
 body[data-bg="services"] {
@@ -489,7 +489,7 @@ body[data-bg="tips"] {
 
 body[data-bg="contact"] {
   background: linear-gradient(180deg,
-    rgba(227,232,234,1) 0%,
-    rgba(218,224,228,1) 40%,
-    rgba(209,217,223,1) 100%);
+    rgb(203, 226, 235) 0%,
+    rgb(65, 164, 230) 40%,
+    rgb(25, 127, 205) 100%);
 }
