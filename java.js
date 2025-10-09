@@ -100,4 +100,39 @@
     });
   })();
   
+  // --- First-visit popup (index only) ---
+(function(){
+    // Only run on index
+    const isHome = /(?:^|\/)index\.html?$/.test(location.pathname) || location.pathname.endsWith('/Inaya/') || location.pathname.endsWith('/Inaya');
+    if(!isHome) return;
+  
+    const modal = document.getElementById('giftPopup');
+    if(!modal) return;
+  
+    const KEY = 'inayaGiftShown';
+    const force = new URLSearchParams(location.search).has('gift'); // ?gift to preview
+  
+    function openGift(){
+      modal.setAttribute('aria-hidden','false');
+      // accessibility: trap basic focus on open element
+      const closeBtn = modal.querySelector('[data-close]') || modal;
+      closeBtn.focus?.();
+      document.addEventListener('keydown', escClose);
+    }
+    function closeGift(){
+      modal.setAttribute('aria-hidden','true');
+      document.removeEventListener('keydown', escClose);
+      try{ localStorage.setItem(KEY, '1'); }catch{}
+    }
+    function escClose(e){ if(e.key === 'Escape') closeGift(); }
+  
+    // open on first visit (or when ?gift present)
+    const seen = (()=>{ try{ return localStorage.getItem(KEY) === '1'; }catch{ return false } })();
+    if(!seen || force) openGift();
+  
+    // close handlers
+    modal.addEventListener('click', (e)=>{
+      if(e.target.matches('[data-close]')) closeGift();
+    });
+  })();
   

@@ -323,3 +323,22 @@
   border-radius:1rem;
   border:1px solid rgba(0,0,0,.06);
 }
+/* First-visit gift popup */
+.gift-popover{ position:fixed; inset:0; display:none; z-index:120; }
+.gift-popover[aria-hidden="false"]{ display:block; }
+.gift-backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.45); backdrop-filter: blur(2px); }
+.gift-card{
+  position:relative; z-index:1; max-width:520px; margin:8vh auto; padding:1.5rem;
+  background:var(--card); border:1px solid rgba(0,0,0,.08); border-radius:1rem;
+  box-shadow:0 20px 50px rgba(0,0,0,.20); animation: giftPop .35s ease;
+}
+.gift-emoji{ font-size:2rem; text-align:center; margin-bottom:.25rem }
+.gift-close{
+  position:absolute; top:.5rem; right:.5rem; width:34px; height:34px;
+  border-radius:999px; border:1px solid rgba(0,0,0,.1); background:#fff; cursor:pointer;
+}
+@keyframes giftPop{ from{ transform:translateY(8px); opacity:0 } to{ transform:translateY(0); opacity:1 } }
+
+@media (max-width:560px){
+  .gift-card{ margin:12vh 1rem; padding:1.25rem }
+}
