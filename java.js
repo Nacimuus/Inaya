@@ -33,16 +33,29 @@
     // Highlight current page in nav
     function setActiveNav(){
       // Normalize path (treat / and /index.html the same)
-      const path = location.pathname.replace(/\/index\.html$/, '/');
+      const path = location.pathname.replace(/\/index\.html$/, '/');const path = location.pathname;
+      const segments = path.split('/').filter(Boolean);
+      let current = segments.pop() || '';
+
+      if (!current || !current.includes('.')) current = 'index.html';
+
       $$('#site-nav a').forEach(a=>{
-        const href = a.getAttribute('href');
-        // If using absolute hrefs like "/services.html", this works out of the box.
-        // If using relative hrefs, you can tweak the logic below.
-        if (href === '/'){
-          if (path === '/' || path.endsWith('/')) a.classList.add('active');
-        } else if (href && path.endsWith(href)) {
-          a.classList.add('active');
+        a.classList.remove('active');
+
+        let href = a.getAttribute('href') || '';
+        if (!href) return;
+
+        href = href.replace(/^\.\//, '');
+        if (href === '/' || href === '') href = 'index.html';
+
+        if (href.startsWith('/')){
+          const parts = href.split('/').filter(Boolean);
+          href = parts.pop() || 'index.html';
         }
+
+        if (!href.includes('.')) href = `${href}.html`;
+
+        if (href === current) a.classList.add('active');
       });
     }
   
