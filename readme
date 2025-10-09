@@ -36,3 +36,19 @@ newsletter-form
 🔹 Replace https://formspree.io/f/your-id with your actual Formspree endpoint (you get it for free at https://formspree.io
 )
 🔹 No backend or account login required — it will email submissions straight to you.
+
+background 
+If you want actual background images instead of gradients, just use Sora with these prompts and set them per page:
+
+Page	Prompt (soft abstract background style)
+Index	“Minimal abstract gradient background in beige, ivory, and gold light, soft smooth transitions, luxury calm aesthetic.”
+Services	“Minimal abstract gradient background in soft duck-blue and ivory tones, subtle paper texture, calming modern feel.”
+Blog	“Abstract gradient background in neutral tones with faint golden light reflections, modern wellness editorial style.”
+Tips	“Warm matte gradient background in sand and soft blush tones, representing reflection and growth.”
+Contact	“Calm gradient background in light gray-blue and cream tones, serene modern wellness palette.”
+
+Then you can add in each page’s CSS section:
+
+body[data-bg="services"] {
+  background: url('bg-services.jpg') no-repeat center/cover;
+}
