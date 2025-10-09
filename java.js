@@ -33,7 +33,7 @@
     // Highlight current page in nav
     function setActiveNav(){
       // Normalize path (treat / and /index.html the same)
-      const path = location.pathname.replace(/\/index\.html$/, '/');const path = location.pathname;
+      const path = location.pathname.replace(/\/index\.html$/, '/');
       const segments = path.split('/').filter(Boolean);
       let current = segments.pop() || '';
 
