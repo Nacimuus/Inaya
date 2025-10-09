@@ -440,3 +440,39 @@
 @media (max-width: 640px){
   .pillars { grid-template-columns: 1fr; }
 }
+
+/* ✨ Page backgrounds */
+body[data-bg="main"] {
+  background: linear-gradient(180deg,
+    rgb(211, 183, 141) 0%,
+    rgb(202, 182, 154) 40%,
+    rgb(32, 17, 1) 100%);
+}
+
+body[data-bg="services"] {
+  background: linear-gradient(180deg,
+    rgba(233,237,240,1) 0%,
+    rgba(223,228,233,1) 50%,
+    rgba(214,222,229,1) 100%);
+}
+
+body[data-bg="blog"] {
+  background: linear-gradient(180deg,
+    rgba(250,248,245,1) 0%,
+    rgba(247,242,236,1) 60%,
+    rgba(242,236,230,1) 100%);
+}
+
+body[data-bg="tips"] {
+  background: linear-gradient(180deg,
+    rgba(240,233,226,1) 0%,
+    rgba(234,228,222,1) 40%,
+    rgba(226,219,213,1) 100%);
+}
+
+body[data-bg="contact"] {
+  background: linear-gradient(180deg,
+    rgba(227,232,234,1) 0%,
+    rgba(218,224,228,1) 40%,
+    rgba(209,217,223,1) 100%);
+}
