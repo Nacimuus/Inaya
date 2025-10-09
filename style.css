@@ -166,3 +166,55 @@
   text-decoration: underline;
   font-size: 0.95rem;
 }
+/* Tip of the Month */
+.tip-feature { margin-top: 1.25rem; }
+.tip-figure {
+  display: grid;
+  gap: .75rem;
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 1.2rem;
+  padding: .75rem;
+}
+.tip-figure img,
+.tip-figure video {
+  width: 100%;
+  height: auto;
+  border-radius: .9rem;
+  display: block;
+}
+.tip-figure blockquote {
+  font-family: "Cormorant Garamond", ui-serif, Georgia, serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  line-height: 1.35;
+  margin: 0 0 .25rem;
+}
+.tip-figure footer { color: var(--muted); font-size: .95rem; }
+
+.tip-card {
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 1rem;
+  background: var(--card);
+  margin-bottom: .75rem;
+  overflow: hidden;
+}
+.tip-card > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .75rem;
+  padding: .9rem 1rem;
+  font-weight: 600;
+}
+.tip-card > summary::-webkit-details-marker { display: none; }
+.tip-card[open] > summary { background: rgba(0,0,0,.03); }
+.tip-card .tip-body { padding: 1rem; }
+.tip-figure.small { padding: .5rem; }
+.tip-month { font-size: 1rem; }
+.tip-tag { font-size: .9rem; }
+
+@media (min-width: 860px){
+  .tip-feature .tip-figure { padding: 1rem; }
+}

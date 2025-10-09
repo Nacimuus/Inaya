@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>INAYA — Tip of the Month</title>
+  <meta name="description" content="One short practice or insight each month. Save them, revisit them, and keep your inner order steady." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="java.js"></script>
+</head>
+<body>
+  <div id="header-include"></div>
+
+  <main class="section">
+    <div class="container max-w">
+      <h1>Tip of the Month</h1>
+      <p class="muted">One clear practice or quote each month — sometimes with a short video. Scroll the history to revisit past months.</p>
+    </div>
+
+    <!-- Featured month -->
+    <section class="container tip-feature">
+      <!-- Option A: image -->
+      <figure class="tip-figure">
+        <!-- Replace with your image file, kept in the same folder -->
+        <img src="tip-2025-10.jpg" alt="Soft natural light with calm tones" loading="lazy">
+        <figcaption>
+          <blockquote>
+            “Regulation is not suppression; it’s learning to feel safely so your presence can stay open.”
+          </blockquote>
+          <footer>— INAYA, October 2025</footer>
+        </figcaption>
+      </figure>
+
+      <!-- Option B: video (uncomment and use instead of image when you have one) -->
+      <!--
+      <figure class="tip-figure">
+        <video controls playsinline poster="tip-2025-10-poster.jpg">
+          <source src="tip-2025-10.mp4" type="video/mp4">
+          Sorry, your browser doesn’t support embedded videos.
+        </video>
+        <figcaption>
+          <blockquote>
+            “Breathe into the moment. Let your body catch up to your life.”
+          </blockquote>
+          <footer>— INAYA, October 2025</footer>
+        </figcaption>
+      </figure>
+      -->
+    </section>
+
+    <div class="spacer-m"></div>
+
+    <!-- History -->
+    <section class="container">
+      <h2>Previous Months</h2>
+      <div class="spacer-s"></div>
+
+      <!-- Month card -->
+      <details class="tip-card" open>
+        <summary>
+          <span class="tip-month">September 2025</span>
+          <span class="tip-tag muted">Quote · Image</span>
+        </summary>
+        <div class="tip-body">
+          <figure class="tip-figure small">
+            <img src="tip-2025-09.jpg" alt="Warm minimal scene" loading="lazy">
+            <figcaption>
+              <blockquote>
+                “Identity beyond performance: when you pause, you do not disappear.”
+              </blockquote>
+              <footer>— INAYA</footer>
+            </figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <details class="tip-card">
+        <summary>
+          <span class="tip-month">August 2025</span>
+          <span class="tip-tag muted">Quote · Video</span>
+        </summary>
+        <div class="tip-body">
+          <figure class="tip-figure small">
+            <video controls playsinline poster="tip-2025-08-poster.jpg">
+              <source src="tip-2025-08.mp4" type="video/mp4">
+            </video>
+            <figcaption>
+              <blockquote>
+                “30 seconds of stillness between meetings changes the next hour.”
+              </blockquote>
+              <footer>— INAYA</footer>
+            </figcaption>
+          </figure>
+        </div>
+      </details>
+
+      <details class="tip-card">
+        <summary>
+          <span class="tip-month">July 2025</span>
+          <span class="tip-tag muted">Quote · Image</span>
+        </summary>
+        <div class="tip-body">
+          <figure class="tip-figure small">
+            <img src="tip-2025-07.jpg" alt="Calm texture with soft palette" loading="lazy">
+            <figcaption>
+              <blockquote>
+                “Boundaries protect connection — they don’t block it.”
+              </blockquote>
+              <footer>— INAYA</footer>
+            </figcaption>
+          </figure>
+        </div>
+      </details>
+
+    </section>
+  </main>
+
+  <div id="footer-include"></div>
+</body>
+</html>
