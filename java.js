@@ -33,7 +33,7 @@
     // Highlight current page in nav
     function setActiveNav(){
       // Normalize path (treat / and /index.html the same)
-      const path = location.pathname;
+      const path = location.pathname.replace(/\/index\.html$/, '/');
       const segments = path.split('/').filter(Boolean);
       let current = segments.pop() || '';
 
@@ -99,16 +99,5 @@
       applyFilter(btn.dataset.filter);
     });
   })();
-  // Close mobile menu after navigation
-(function(){
-    const nav = document.getElementById('site-nav');
-    const btn = document.querySelector('.nav-toggle');
-    if(!nav || !btn) return;
-    nav.addEventListener('click', (e)=>{
-      const link = e.target.closest('a');
-      if(!link) return;
-      nav.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
-  })();
+  
   
