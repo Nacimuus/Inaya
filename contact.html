@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>INAYA — Contact</title>
+  <meta name="description" content="Contact INAYA for a discovery call, callback request, or to book a first appointment." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="java.js"></script>
+</head>
+<body>
+  <div id="header-include"></div>
+
+  <main class="section">
+    <div class="container">
+      <h1>Contact</h1>
+      <p class="muted max-w">Email us directly, request a callback, or propose a time for your first appointment. Keep it simple.</p>
+      <div class="spacer-m"></div>
+
+      <!-- Two-column on desktop, single on mobile -->
+      <div class="grid" style="grid-template-columns:1.1fr .9fr; gap:1.25rem">
+        <!-- Form -->
+        <section class="card">
+          <h3 id="form">Send a message</h3>
+
+          <!-- Option A (recommended): Form backend like Formspree. Replace the action URL. -->
+          <!-- Option B: Use mailto: hello@inaya.co (very basic, less reliable) -->
+          <form action="https://formspree.io/f/your-id" method="POST">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" required />
+            </label>
+
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required />
+            </label>
+
+            <label>
+              <span>Phone (optional)</span>
+              <input type="tel" name="phone" placeholder="+33 6 00 00 00 00" />
+            </label>
+
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="5" placeholder="Tell us your goal in one sentence" required></textarea>
+            </label>
+
+            <!-- Callback request -->
+            <fieldset style="border:0; padding:0; margin: .5rem 0 0">
+              <legend class="muted" style="font-weight:600; margin-bottom:.35rem">Callback (optional)</legend>
+              <label style="display:flex; align-items:center; gap:.5rem">
+                <input type="checkbox" id="want-callback" name="want_callback" value="yes" />
+                <span>Request a callback</span>
+              </label>
+              <div id="callback-fields" style="display:none; margin-top:.5rem">
+                <label>
+                  <span>Best day</span>
+                  <input type="date" name="callback_date" />
+                </label>
+                <label>
+                  <span>Time window</span>
+                  <select name="callback_window">
+                    <option value="">Choose…</option>
+                    <option>Morning (09:00–12:00)</option>
+                    <option>Afternoon (13:00–17:00)</option>
+                    <option>Evening (18:00–20:00)</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Appointment booking -->
+            <fieldset style="border:0; padding:0; margin:.75rem 0 0">
+              <legend class="muted" style="font-weight:600; margin-bottom:.35rem">Propose an appointment (optional)</legend>
+              <label style="display:flex; align-items:center; gap:.5rem">
+                <input type="checkbox" id="book-appointment" name="book_appointment" value="yes" />
+                <span>Propose a first appointment</span>
+              </label>
+              <div id="appointment-fields" style="display:none; margin-top:.5rem">
+                <label>
+                  <span>Date</span>
+                  <input type="date" name="appt_date" />
+                </label>
+                <label>
+                  <span>Time</span>
+                  <input type="time" name="appt_time" />
+                </label>
+                <label>
+                  <span>Mode</span>
+                  <select name="appt_mode">
+                    <option value="">Choose…</option>
+                    <option>Video (Google Meet)</option>
+                    <option>Video (Zoom)</option>
+                    <option>Phone</option>
+                    <option>In person (if available)</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- GDPR consent -->
+            <label style="display:flex; align-items:flex-start; gap:.5rem; margin-top:.75rem">
+              <input type="checkbox" name="consent" required />
+              <span class="muted" style="font-size:.95rem">I agree to be contacted regarding my request. My data will be handled per the Privacy & GDPR policy.</span>
+            </label>
+
+            <div class="spacer-s"></div>
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
+        </section>
+
+        <!-- Direct contact + micro-FAQ -->
+        <aside class="card">
+          <h3>Direct contact</h3>
+          <p class="muted">Prefer to skip the form?</p>
+          <div class="spacer-xs"></div>
+          <p>Email: <a href="mailto:hello@inaya.co">hello@inaya.co</a></p>
+          <p>Phone: <a href="tel:+33600000000">+33 6 00 00 00 00</a></p>
+          <div class="spacer-s"></div>
+          <h3>What happens next?</h3>
+          <p class="muted">We reply within 24–48h (weekday). If you proposed a time, we’ll confirm or suggest another slot.</p>
+          <div class="spacer-s"></div>
+          <a class="btn" href="tips.html">See this month’s tip</a>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-include"></div>
+
+  <!-- Page-scoped enhancement: toggle optional sections -->
+  <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const cb = document.getElementById('want-callback');
+      const cbBox = document.getElementById('callback-fields');
+      const ap = document.getElementById('book-appointment');
+      const apBox = document.getElementById('appointment-fields');
+
+      function toggle(el, box){ box.style.display = el.checked ? '' : 'none'; }
+      if (cb && cbBox){ cb.addEventListener('change', ()=>toggle(cb, cbBox)); }
+      if (ap && apBox){ ap.addEventListener('change', ()=>toggle(ap, apBox)); }
+    });
+  </script>
+</body>
+</html>
