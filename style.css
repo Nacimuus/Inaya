@@ -36,7 +36,7 @@
   /* Header / Nav */
   .site-header{
     position:sticky; top:0; z-index:50;
-    background:rgba(248,246,244,.9);
+    background:rgba(248,246,244,.8);
     backdrop-filter:saturate(160%) blur(6px);
     border-bottom:1px solid rgba(0,0,0,.06)
   }
@@ -58,7 +58,7 @@
   
   /* Buttons */
   .btn{
-    display:inline-block; padding:.65rem 1rem; border-radius:.7rem;
+    display:inline-block; padding:.75rem 1.1rem; border-radius:.7rem;
     border:1px solid rgba(0,0,0,.1); background:var(--card);
     box-shadow:0 1px 0 rgba(0,0,0,.03); transition:transform .12s ease
   }
@@ -407,4 +407,36 @@
 @media (max-width:600px){
   .site-logo{ height:36px; }
   .logo-text{ font-size:1.2rem; }
+}
+/* Carrd-like landing styles */
+.display { font-family:"Cormorant Garamond", serif; font-weight:700; 
+  font-size: clamp(2rem, 8vw, 4rem); line-height: 1.05; }
+.display-sm { font-family:"Cormorant Garamond", serif; font-weight:700; 
+  font-size: clamp(1.6rem, 6vw, 3rem); line-height:1.1; }
+.lede { font-size: clamp(1rem, 2.2vw, 1.25rem); color: var(--muted); }
+
+.block { padding: clamp(56px, 8vw, 120px) 0; }
+.fullbleed img { width: 100%; height: auto; display: block; }
+
+.container.narrow { width: min(860px, 88%); margin-inline: auto; }
+.center { text-align: center; }
+
+.kicker { font-size: clamp(1.1rem, 2.6vw, 1.6rem); 
+  letter-spacing:.02em; margin: 0 0 .5rem; }
+
+.big { font-size: clamp(1.05rem, 2.2vw, 1.35rem); color: var(--ink); }
+
+.dash-list { list-style: none; padding: 0; margin: 0; 
+  display: grid; gap: .5rem; font-size: 1.05rem; }
+.dash-list li { position: relative; padding-left: 1.2rem; }
+.dash-list li::before { content: "–"; position: absolute; left: 0; color: var(--muted); }
+
+.pillars { display: grid; gap: 1rem; 
+  grid-template-columns: repeat(2, minmax(0,1fr)); }
+.pillars article { background: var(--card); border: 1px solid rgba(0,0,0,.06); 
+  border-radius: 1rem; padding: 1rem; }
+.pillars h3 { margin: 0 0 .25rem; font-size: 1.15rem; }
+
+@media (max-width: 640px){
+  .pillars { grid-template-columns: 1fr; }
 }
