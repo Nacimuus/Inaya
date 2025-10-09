@@ -31,3 +31,8 @@ Replace svc-1.jpg, svc-2.jpg, svc-3.jpg with your images (same folder).
 Change the service names inside each <figcaption>.
 
 All cards currently link to contact.html. If you later create dedicated service pages, update the href accordingly.
+
+newsletter-form
+🔹 Replace https://formspree.io/f/your-id with your actual Formspree endpoint (you get it for free at https://formspree.io
+)
+🔹 No backend or account login required — it will email submissions straight to you.

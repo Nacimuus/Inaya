@@ -135,6 +135,7 @@
       if(e.target.matches('[data-close]')) closeGift();
     });
   })();
+  
   // Newsletter inline confirmation
 document.addEventListener('submit', e => {
     const form = e.target.closest('.newsletter-form');

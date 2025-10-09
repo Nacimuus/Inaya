@@ -381,3 +381,30 @@
 .newsletter-form button {
   padding: .6rem 1rem;
 }
+/* Logo styling */
+.site-logo {
+  height: 44px;               /* adjust to your logo’s proportions */
+  width: auto;
+  display: block;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: var(--ink);
+}
+
+/* Make logo slightly smaller on mobile */
+@media (max-width:600px){
+  .site-logo{ height:36px; }
+  .logo-text{ font-size:1.2rem; }
+}
