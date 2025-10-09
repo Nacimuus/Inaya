@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Architectes de la Réussite</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <!-- Font Awesome pour icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Leaflet.js pour la carte -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <!-- AOS (animations) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div id="header"></div>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main>
+    <!-- Hero -->
+    <section class="hero" data-aos="fade-up">
+      <div class="hero-content">
+        <h1>Bâtir l’Espoir, Donner du Pouvoir à la Jeunesse, Façonner l’Avenir 🌍</h1>
+        <p>Nous créons des opportunités pour les jeunes à travers le monde grâce à la formation, l’éducation et un accompagnement continu.</p>
+        <a href="initiatives.html" class="btn-primary" data-aos="zoom-in" data-aos-delay="300">Découvrir Nos Initiatives</a>
+      </div>
+    </section>
+
+    <section class="pourquoi-nous">
+      <div class="container">
+        <!-- Colonne texte -->
+        <div class="text-content" data-aos="fade-right">
+          <h2>Pourquoi Nous ?</h2>
+          <p>
+            Nous croyons en une Afrique où chaque jeune peut briller ✨.<br>
+            Nous partageons notre expertise et notre expérience pour <strong>co-construire le futur</strong> avec la jeunesse.<br>
+            Notre mission est faite d’amour, de compassion et d’espoir 🌍.
+          </p>
+        </div>
+    
+        <!-- Colonne bulles -->
+        <div class="bubbles-content" data-aos="fade-left">
+          <div class="bubbles">
+            <span>Espoir</span>
+            <span>Compassion</span>
+            <span>Partage</span>
+            <span>Avenir</span>
+            <span>Éducation</span>
+            <span>Unité</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Valeurs -->
+    <section class="values">
+      <h2 data-aos="fade-up">Nos Valeurs</h2>
+      <div class="values-cards">
+        
+        <!-- Kaizen -->
+        <div class="value-card kaizen" data-aos="fade-up" data-aos-delay="0">
+          <div class="card-content">
+            <h3>Kaizen</h3>
+            <p>L’amélioration continue dans tout ce que nous entreprenons.</p>
+          </div>
+        </div>
+    
+        <!-- Ubuntu -->
+        <div class="value-card ubuntu" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-content">
+            <h3>Ubuntu</h3>
+            <p>Je suis parce que nous sommes : solidarité et humanité.</p>
+          </div>
+        </div>
+    
+        <!-- Gambaru -->
+        <div class="value-card gambaru" data-aos="fade-up" data-aos-delay="400">
+          <div class="card-content">
+            <h3>Gambaru</h3>
+            <p>Persévérance et résilience face aux défis.</p>
+          </div>
+        </div>
+    
+      </div>
+    </section>
+    
+
+    <!-- Partenaires -->
+    <section class="partners">
+      <h2 data-aos="fade-up">Nos Partenaires</h2>
+    
+      <!-- Swiper Container -->
+      <div class="swiper partners-swiper" data-aos="zoom-in">
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide"><img src="images/partner1.png" alt="Partenaire 1"></div>
+          <div class="swiper-slide"><img src="images/partner2.png" alt="Partenaire 2"></div>
+          <div class="swiper-slide"><img src="images/partner3.png" alt="Partenaire 3"></div>
+          <div class="swiper-slide"><img src="images/partner4.png" alt="Partenaire 4"></div>
+          <div class="swiper-slide"><img src="images/partner5.png" alt="Partenaire 5"></div>
+          <div class="swiper-slide"><img src="images/partner6.png" alt="Partenaire 6"></div>
+        </div>
+    
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+    
+
+    <!-- Carte du Monde -->
+    <section class="world-map" data-aos="fade-up">
+      <h2>Notre Impact à l’Échelle Mondiale</h2>
+      <p>Découvrez où nous formons, soutenons et accompagnons la jeunesse à travers le monde.</p>
+      <div id="map" data-aos="zoom-in"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Init animations
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // Init Leaflet map
+    document.addEventListener("DOMContentLoaded", function() {
+      const map = L.map('map').setView([20,0], 2);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributeurs'
+      }).addTo(map);
+
+      // Marqueurs exemples
+      L.marker([48.8566, 2.3522]).addTo(map).bindPopup("Paris - Siège partenaire");
+      L.marker([5.6037, -0.1870]).addTo(map).bindPopup("Accra, Ghana - Académie de formation");
+      L.marker([-1.2921, 36.8219]).addTo(map).bindPopup("Nairobi, Kenya - Programme jeunesse");
+      L.marker([34.0522, -118.2437]).addTo(map).bindPopup("Los Angeles - Organisation partenaire");
+    });
+  </script>
+  <!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</body>
+</html>
