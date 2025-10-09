@@ -316,3 +316,10 @@
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.hero-figure img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:1rem;
+  border:1px solid rgba(0,0,0,.06);
+}
