@@ -135,4 +135,12 @@
       if(e.target.matches('[data-close]')) closeGift();
     });
   })();
+  // Newsletter inline confirmation
+document.addEventListener('submit', e => {
+    const form = e.target.closest('.newsletter-form');
+    if(!form) return;
+    e.preventDefault();
+    const email = form.querySelector('input[name="email"]');
+    form.innerHTML = `<p class="muted">✨ Thank you, ${email.value || 'friend'} — you’re on the list!</p>`;
+  });
   

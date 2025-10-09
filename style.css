@@ -342,3 +342,42 @@
 @media (max-width:560px){
   .gift-card{ margin:12vh 1rem; padding:1.25rem }
 }
+/* Newsletter form in footer */
+.footer-newsletter {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 2rem;
+  background: linear-gradient(135deg, rgba(207,164,160,0.15), rgba(0,0,0,0.02));
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.footer-newsletter h3 {
+  margin-bottom: .25rem;
+}
+.footer-newsletter p {
+  font-size: .95rem;
+  max-width: 520px;
+  margin: 0 auto 1rem;
+  color: var(--muted);
+}
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.newsletter-form input {
+  padding: .6rem .8rem;
+  border-radius: .7rem;
+  border: 1px solid rgba(0,0,0,.12);
+  font-size: .95rem;
+  min-width: 220px;
+}
+.newsletter-form input:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+.newsletter-form button {
+  padding: .6rem 1rem;
+}
