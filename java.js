@@ -59,4 +59,31 @@
       if($('#footer-include')) inject('#footer-include','footer.html');
     });
   })();
+  // --- Blog topic filter ---
+(function(){
+    const container = document.querySelector('.filters');
+    if(!container) return;
+  
+    const chips = Array.from(container.querySelectorAll('.chip'));
+    const cards = Array.from(document.querySelectorAll('.bubble'));
+  
+    function applyFilter(topic){
+      cards.forEach(card=>{
+        if(topic === 'all'){
+          card.style.display = '';
+          return;
+        }
+        const tags = (card.getAttribute('data-tags') || '').split(/\s+/);
+        card.style.display = tags.includes(topic) ? '' : 'none';
+      });
+    }
+  
+    container.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.chip');
+      if(!btn) return;
+      chips.forEach(c=>c.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      applyFilter(btn.dataset.filter);
+    });
+  })();
   

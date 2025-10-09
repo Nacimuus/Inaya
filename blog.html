@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>INAYA — Blog</title>
+  <meta name="description" content="Short, clear insights on regulation, leadership, boundaries, and presence." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script defer src="java.js"></script>
+</head>
+<body>
+  <div id="header-include"></div>
+
+  <main class="section">
+    <div class="container">
+      <header class="max-w">
+        <h1>Blog</h1>
+        <p class="muted">Short, clear pieces designed to be saved — not scrolled. Pick a topic to filter.</p>
+      </header>
+
+      <!-- Filters -->
+      <div class="filters">
+        <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="regulation">Emotional Regulation</button>
+        <button class="chip" data-filter="boundaries">Boundaries</button>
+        <button class="chip" data-filter="leadership">Leadership</button>
+        <button class="chip" data-filter="relationships">Relationships</button>
+        <button class="chip" data-filter="beauty">Beauty & Expression</button>
+        <button class="chip" data-filter="productivity">Productivity</button>
+      </div>
+
+      <!-- Grid of bubble cards -->
+      <section class="blog-grid">
+        <!-- EXAMPLE CARDS — duplicate/edit as you publish -->
+        <article class="bubble" data-tags="regulation relationships">
+          <a class="bubble-inner" href="#">
+            <img class="bubble-img" src="blog-2025-10.jpg" alt="Soft portrait" loading="lazy">
+            <div class="bubble-copy">
+              <h3 class="bubble-title">Controlled feeling ≠ control</h3>
+              <p class="bubble-excerpt">Regulation is learning to feel safely, not shutting down. A 90-second micro-practice you can try today.</p>
+              <div class="bubble-meta"><time datetime="2025-10-02">Oct 2, 2025</time> · Regulation</div>
+            </div>
+          </a>
+        </article>
+
+        <article class="bubble" data-tags="boundaries relationships">
+          <a class="bubble-inner" href="#">
+            <img class="bubble-img" src="blog-2025-09.jpg" alt="Warm minimal still life" loading="lazy">
+            <div class="bubble-copy">
+              <h3 class="bubble-title">Boundaries protect connection</h3>
+              <p class="bubble-excerpt">How to set one clean sentence that keeps the door open and your center intact.</p>
+              <div class="bubble-meta"><time datetime="2025-09-21">Sep 21, 2025</time> · Boundaries</div>
+            </div>
+          </a>
+        </article>
+
+        <article class="bubble" data-tags="leadership productivity">
+          <a class="bubble-inner" href="#">
+            <img class="bubble-img" src="blog-2025-08.jpg" alt="Notebook and light" loading="lazy">
+            <div class="bubble-copy">
+              <h3 class="bubble-title">Lead with stillness</h3>
+              <p class="bubble-excerpt">30 seconds between meetings can change the next hour. Here’s how to make it a habit.</p>
+              <div class="bubble-meta"><time datetime="2025-08-30">Aug 30, 2025</time> · Leadership</div>
+            </div>
+          </a>
+        </article>
+
+        <article class="bubble" data-tags="beauty leadership">
+          <a class="bubble-inner" href="#">
+            <img class="bubble-img" src="blog-2025-07.jpg" alt="Calm neutral palette" loading="lazy">
+            <div class="bubble-copy">
+              <h3 class="bubble-title">Beautology after inner order</h3>
+              <p class="bubble-excerpt">Style as energy: why expression lands better when your inside is settled first.</p>
+              <div class="bubble-meta"><time datetime="2025-07-18">Jul 18, 2025</time> · Beauty</div>
+            </div>
+          </a>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer-include"></div>
+</body>
+</html>

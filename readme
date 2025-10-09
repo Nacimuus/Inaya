@@ -1,0 +1,22 @@
+for tips 
+Add media files in the same folder (e.g., tip-2025-11.jpg or tip-2025-11.mp4 with a poster JPG).
+
+In the Featured section at the top, replace the image/video + quote + month label.
+
+Move last month’s content into a new <details class="tip-card">…</details> block in the Previous Months section.
+
+Keep the newest previous month’s <details> with open if you want it expanded by default.
+
+
+    blog
+    How to post articles
+
+Duplicate a .bubble block and change:
+
+href="#" → link to a full post page if/when you create it.
+
+src="blog-YYYY-mm.jpg" → thumbnail image.
+
+data-tags="regulation leadership" → space-separated topics.
+
+Title, excerpt, and date.
