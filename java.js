@@ -55,8 +55,8 @@
   
     // Boot: look for placeholders and inject
     document.addEventListener('DOMContentLoaded', ()=>{
-      if($('#header-include')) inject('#header-include','partials/header.html');
-      if($('#footer-include')) inject('#footer-include','partials/footer.html');
+      if($('#header-include')) inject('#header-include','header.html');
+      if($('#footer-include')) inject('#footer-include','footer.html');
     });
   })();
   
