@@ -183,3 +183,118 @@ document.addEventListener('submit', e => {
     const email = form.querySelector('input[name="email"]');
     form.innerHTML = `<p class="muted">✨ Thank you, ${email.value || 'friend'} — you’re on the list!</p>`;
   });
+// --- Testimonial carousel: infinite with clones + arrows always visible ---
+(function(){
+    const root = document.querySelector('#proofCarousel[data-carousel]');
+    if(!root) return;
+  
+    const track = root.querySelector('.carousel-track');
+    const slidesOrig = Array.from(root.querySelectorAll('.slide'));
+    const prev = root.querySelector('.prev');
+    const next = root.querySelector('.next');
+    const dotsWrap = root.querySelector('.carousel-dots');
+  
+    // Clone first/last for seamless loop
+    const firstClone = slidesOrig[0].cloneNode(true);
+    const lastClone  = slidesOrig[slidesOrig.length - 1].cloneNode(true);
+    firstClone.classList.remove('is-active');
+    lastClone.classList.remove('is-active');
+    track.insertBefore(lastClone, track.firstChild);
+    track.appendChild(firstClone);
+  
+    const slides = Array.from(track.querySelectorAll('.slide')); // now includes clones
+  
+    let index = 1;            // start on the first REAL slide
+    let width = root.clientWidth;
+  
+    // Set initial position
+    function setPosition(noAnim=false){
+      if(noAnim) track.style.transition = 'none';
+      track.style.transform = `translateX(-${index * 100}%)`;
+      const activeSlide = slides[index];
+  if (activeSlide) {
+    const newHeight = activeSlide.offsetHeight;
+    root.style.height = newHeight + "px";
+  }
+      if(noAnim){
+        // force reflow then restore transition
+        void track.offsetHeight;
+        track.style.transition = '';
+      }
+    }
+    setPosition(true);
+  
+    // Build dots for real slides only
+    slidesOrig.forEach((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'dot' + (i === 0 ? ' is-active' : '');
+      b.setAttribute('aria-label', `Go to testimonial ${i+1}`);
+      b.addEventListener('click', () => goTo(i + 1)); // +1 because of leading clone
+      dotsWrap.appendChild(b);
+    });
+  
+    function updateDots(){
+      const dotIndex = (index - 1 + slidesOrig.length) % slidesOrig.length; // 0..n-1
+      dotsWrap.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('is-active', i===dotIndex));
+    }
+  
+    function goTo(i){
+      index = i;
+      track.style.transition = 'transform .35s ease';
+      setPosition();
+    }
+  
+    function nextSlide(){ goTo(index + 1); }
+    function prevSlide(){ goTo(index - 1); }
+  
+    // Handle seamless jump after transition (when on clones)
+    track.addEventListener('transitionend', ()=>{
+      if (slides[index] === firstClone) {
+        index = 1; // jump to first real slide
+        setPosition(true);
+      }
+      if (slides[index] === lastClone) {
+        index = slides.length - 2; // jump to last real slide
+        setPosition(true);
+      }
+      updateDots();
+    });
+  
+    // Arrows
+    prev.addEventListener('click', prevSlide);
+    next.addEventListener('click', nextSlide);
+  
+    // Keyboard
+    root.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowLeft') prevSlide();
+      if(e.key === 'ArrowRight') nextSlide();
+    });
+    root.tabIndex = 0;
+  
+    // Swipe
+    let startX = 0, dx = 0;
+    root.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive:true });
+    root.addEventListener('touchmove',  e => { dx = e.touches[0].clientX - startX; }, { passive:true });
+    root.addEventListener('touchend',   () => {
+      if (Math.abs(dx) > 40) { dx < 0 ? nextSlide() : prevSlide(); }
+      dx = 0;
+    });
+  
+    // Autoplay (loop forever)
+    let timer = setInterval(nextSlide, 5000);
+    const stop = () => { clearInterval(timer); timer = null; };
+    const start = () => { if(!timer) timer = setInterval(nextSlide, 5000); };
+  
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+  
+    // Resize safety (keeps transform aligned)
+    window.addEventListener('resize', ()=>{ width = root.clientWidth; setPosition(true); }, { passive:true });
+  
+    // Init
+    updateDots();
+  })();
+  setPosition(true);

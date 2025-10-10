@@ -493,3 +493,98 @@ body[data-bg="contact"] {
     rgba(65, 230, 211, 0.667) 40%,
     rgb(25, 205, 175) 100%);
 }
+/* Testimonial carousel */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 1rem;
+  padding: .5rem 0;
+  transition: height .35s ease;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform .35s ease;
+  will-change: transform;
+}
+
+.slide {
+  min-width: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 220px; /* adjust for consistent height */
+}
+
+.slide blockquote {
+  font-family: "Cormorant Garamond", ui-serif, Georgia, serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  line-height: 1.35;
+  margin: 0 0 .35rem;
+  max-width: 640px;
+}
+
+.slide figcaption {
+  font-size: .95rem;
+  color: var(--muted);
+}
+.carousel-track {
+  display: flex;
+  align-items: center;   /* ensures vertical centering */
+  transition: transform .35s ease;
+  will-change: transform;
+}
+.slide.is-active blockquote {
+  color: var(--ink);
+  background: var(--gold-gradient);
+  background-clip: text;
+  color: transparent;
+}
+
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: #fff;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: .2s ease;
+}
+.carousel-btn:hover { box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+.carousel-btn.prev { left: .6rem; }
+.carousel-btn.next { right: .6rem; }
+
+.carousel-dots {
+  display: flex;
+  gap: .4rem;
+  justify-content: center;
+  padding: .4rem 0 .8rem;
+}
+.carousel-dots .dot {
+  width: 8px; height: 8px; border-radius: 999px;
+  background: rgba(0,0,0,.18);
+  border: 0;
+  cursor: pointer;
+}
+.carousel-dots .dot.is-active {
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(207,168,101,.25);
+}
+
+
+/* Ensure arrows show on mobile too and are easy to tap */
+.carousel-btn { display: grid; }          /* remove prior mobile hide */
+.carousel-btn { width: 44px; height: 44px; }  /* bigger tap target */
+.carousel-btn:hover { border-color: var(--gold); color: var(--gold); }
