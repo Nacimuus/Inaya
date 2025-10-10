@@ -106,6 +106,7 @@
   
     // Boot: look for placeholders and inject
     document.addEventListener('DOMContentLoaded', ()=>{
+        initGlassHeader();
       if($('#header-include')) inject('#header-include','header.html');
       if($('#footer-include')) inject('#footer-include','footer.html');
     });
@@ -182,20 +183,3 @@ document.addEventListener('submit', e => {
     const email = form.querySelector('input[name="email"]');
     form.innerHTML = `<p class="muted">✨ Thank you, ${email.value || 'friend'} — you’re on the list!</p>`;
   });
-  // Glass header: solidify slightly after scrolling
-(function(){
-  const header = document.querySelector('.site-header');
-  if(!header) return;
-
-  const onScroll = () => {
-    if (window.scrollY > 10) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  };
-
-  // Run once on load (in case you land mid-page), then on scroll
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
-})();
