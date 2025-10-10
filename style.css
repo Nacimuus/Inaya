@@ -35,23 +35,28 @@
   
   /* Header / Nav */
   /* Sticky, translucent header */
-.site-header{
-  position: sticky; /* always visible on scroll */
-  top: 0;
-  z-index: 100;
-  padding-top: env(safe-area-inset-top); /* iOS notch */
-  background: rgba(249, 248, 246, 0.45); /* very light + transparent */
-  backdrop-filter: saturate(160%) blur(8px);
-  border-bottom: 1px solid rgba(0,0,0,.06);
-  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-
-/* When page is scrolled: increase contrast slightly */
-.site-header.scrolled{
-  background: rgba(249, 248, 246, 0.85);
-  border-bottom-color: rgba(0,0,0,.10);
-  box-shadow: 0 6px 24px rgba(0,0,0,.08);
-}
+  header.site-header{
+    position: fixed;          /* always visible on scroll */
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(249,248,246,0.38);   /* transparent base */
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px); /* iOS/Safari */
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    transition: background .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  
+  /* After you scroll a bit, increase contrast for readability */
+  header.site-header.scrolled{
+    background: rgba(249,248,246,0.85);
+    border-bottom-color: rgba(0,0,0,.12);
+    box-shadow: 0 6px 24px rgba(0,0,0,.10);
+  }
+  
+  /* Push the page down so content doesn’t hide under the fixed header */
+  body.has-fixed-header{
+    padding-top: var(--header-h, 64px);
+  }
 
 /* Keep nav items readable over translucent glass */
 .site-nav a{ color: var(--ink); }
