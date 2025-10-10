@@ -2,6 +2,41 @@
     const $  = (s, r=document)=>r.querySelector(s);
     const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
   
+    let glassHeaderState = { header: null, handler: null };
+
+    function initGlassHeader(){
+      const header = document.querySelector('.site-header');
+
+      if(!header){
+        if(glassHeaderState.handler){
+          window.removeEventListener('scroll', glassHeaderState.handler);
+          glassHeaderState = { header: null, handler: null };
+        }
+        return;
+      }
+
+      if(glassHeaderState.header === header){
+        glassHeaderState.handler?.();
+        return;
+      }
+
+      if(glassHeaderState.handler){
+        window.removeEventListener('scroll', glassHeaderState.handler);
+      }
+
+      const handler = () => {
+        if(window.scrollY > 10){
+          header.classList.add('scrolled');
+        }else{
+          header.classList.remove('scrolled');
+        }
+      };
+
+      glassHeaderState = { header, handler };
+      handler();
+      window.addEventListener('scroll', handler, { passive: true });
+    }
+
     // Inject header & footer partials into pages
     async function inject(selector, path){
       // Works both locally and when deployed at domain root.
@@ -10,7 +45,10 @@
         const res = await fetch(path);
         const html = await res.text();
         const mount = $(selector);
-        if (mount) mount.innerHTML = html;
+        if (mount){
+            mount.innerHTML = html;
+            if(path.includes('header')) initGlassHeader();
+          }
         if(path.includes('header')) initNav();
         if(path.includes('footer')) initFooter();
         setActiveNav();
