@@ -209,6 +209,44 @@
     </div>
   </div>
 </div>
+<!-- 🌸 Inaya Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <h4>🍪 Your Privacy Matters</h4>
+    <p>
+      Inaya uses cookies to make your visit smoother and more personal.
+      They help us understand how you use the site and improve your experience.
+      You can choose to accept or refuse them — it’s entirely up to you 💛
+    </p>
+    <div class="cookie-actions">
+      <button id="accept-cookies">Accept</button>
+      <button id="refuse-cookies">Refuse</button>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const refuseBtn = document.getElementById("refuse-cookies");
+
+    // Only show if no choice made
+    if (!localStorage.getItem("cookieConsent")) {
+      setTimeout(() => banner.classList.add("show"), 1200); // smooth delayed entry
+    }
+
+    acceptBtn.addEventListener("click", () => {
+      localStorage.setItem("cookieConsent", "accepted");
+      banner.classList.remove("show");
+    });
+
+    refuseBtn.addEventListener("click", () => {
+      localStorage.setItem("cookieConsent", "refused");
+      banner.classList.remove("show");
+    });
+  });
+</script>
+
 
 </body>
 </html>
