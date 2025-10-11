@@ -466,9 +466,9 @@
 /* ✨ Page backgrounds */
 body[data-bg="main"] {
   background: linear-gradient(180deg,
-    rgba(199, 113, 113, 0.591) 0%,
-    rgba(140, 69, 69, 0.79) 40%,
-    rgba(154, 73, 73, 0.628) 100%);
+    rgba(199, 128, 128, 0.465) 0%,
+    rgba(140, 69, 69, 0.619) 40%,
+    rgba(156, 71, 71, 0.401) 100%);
 }
 
 body[data-bg="services"] {
@@ -495,8 +495,8 @@ body[data-bg="tips"] {
 body[data-bg="contact"] {
   background: linear-gradient(180deg,
     rgb(179, 228, 219) 0%,
-    rgba(65, 230, 211, 0.667) 40%,
-    rgb(25, 205, 175) 100%);
+    rgba(86, 225, 209, 0.457) 40%,
+    rgba(25, 205, 175, 0.786) 100%);
 }
 /* Testimonial carousel */
 .carousel {
@@ -560,15 +560,21 @@ body[data-bg="contact"] {
   width: 38px;
   height: 38px;
   border-radius: 999px;
-  border: 1px solid rgba(0,0,0,.12);
-  background: #fff;
+  border: 1px solid rgba(0,0,0,.15);
+  background: rgba(255,255,255,.18);
   color: var(--ink);
   display: grid;
   place-items: center;
   cursor: pointer;
   transition: .2s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,.3);
 }
-.carousel-btn:hover { box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+.carousel-btn:hover {
+  background: rgba(255,255,255,.32);
+  border-color: rgba(0,0,0,.25);
+  box-shadow: 0 6px 16px rgba(0,0,0,.1);
+}
+
 .carousel-btn.prev { left: .6rem; }
 .carousel-btn.next { right: .6rem; }
 
