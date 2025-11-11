@@ -298,3 +298,37 @@ document.addEventListener('submit', e => {
     updateDots();
   })();
   setPosition(true);
+// CEO video play handling (supports MP4 and YouTube privacy embed)
+(function () {
+  var frames = document.querySelectorAll('.ceo-video__frame');
+  if (!frames.length) return;
+
+  frames.forEach(function(frame){
+    var playBtn = frame.querySelector('.ceo-video__play');
+    if (!playBtn) return;
+
+    playBtn.addEventListener('click', function(){
+      frame.classList.add('is-playing');
+
+      if (frame.dataset.player === 'mp4') {
+        var vid = frame.querySelector('video');
+        if (vid) {
+          // ensure video fills wrapper (remove 16:9 spacer when real media paints)
+          vid.style.objectFit = 'contain'; // optional; keep 'cover' for cinematic
+          vid.play().catch(function(){ /* ignore autoplay restrictions */ });
+          vid.setAttribute('controls', 'controls');
+        }
+      } else if (frame.dataset.player === 'youtube') {
+        var src = frame.dataset.src;
+        var existing = frame.querySelector('iframe');
+        if (!existing) {
+          var iframe = document.createElement('iframe');
+          iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+          iframe.setAttribute('allowfullscreen', 'true');
+          iframe.src = src;
+          frame.appendChild(iframe);
+        }
+      }
+    }, { passive: true });
+  });
+})();
