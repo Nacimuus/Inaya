@@ -507,6 +507,7 @@ body[data-bg="contact"] {
   border-radius: 1rem;
   padding: .5rem 0;
   transition: height .35s ease;
+  touch-action: pan-y;
 }
 
 .carousel-track {
@@ -1026,59 +1027,155 @@ body[data-bg="contact"] {
 
 /* Layout canvas */
 .ceo-orbit {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;  /* left – center – right */
+  grid-template-rows: auto auto auto;   /* top – center – bottom */
+  align-items: center;
+  justify-items: center;                 /* center items in each cell */
+  gap: 14px 14px;
   position: relative;
-  min-height: 520px;
 }
 
 /* Central circular avatar */
 .ceo-avatar {
-  position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(140px, 18vw, 220px);
-  height: clamp(140px, 18vw, 220px);
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid rgba(212,175,55,0.85); /* gold ring */
-  box-shadow: 0 12px 40px rgba(0,0,0,0.18), 0 0 0 8px rgba(118,201,214,0.12); /* duck-blue glow */
+  grid-column: 2; grid-row: 2;
+  position: relative;
+  justify-self: center; align-self: center; /* hard-center the image */
+  transform: none; margin: 0;
+  width: clamp(120px, 32vw, 168px);
+  height: clamp(120px, 32vw, 168px);
+  object-fit: cover; display: block;
   z-index: 2;
 }
 
 /* Cards styling */
-.ceo-card {
-  position: absolute;
-  max-width: 280px;
-  padding: 16px 18px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-  color: #fff;
+/* Brand tokens (tweak if needed) */
+:root{
+  --gold: #d4af37;
+  --duck: #76c9d6;
+  --ink:  #0c1b1f;
+  --glass: rgba(255,255,255,0.08);
 }
-.ceo-card h3 {
+
+/* Card surface */
+.ceo-card{
+  position: absolute;
+  max-width: 300px;
+  padding: 18px 18px 18px 60px;       /* room for icon badge */
+  border-radius: 18px;
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05)) border-box,
+    radial-gradient(120% 100% at 0% 0%, rgba(212,175,55,0.25), rgba(118,201,214,0.15) 50%, transparent 70%) border-box;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* Subtle corner accent */
+.ceo-card::after{
+  content:"";
+  position:absolute; right:0; top:0;
+  width: 44px; height: 44px;
+  background: conic-gradient(from 210deg, rgba(212,175,55,0.6), rgba(118,201,214,0.0));
+  opacity: .35;
+  filter: blur(6px);
+  pointer-events:none;
+}
+
+.ceo-card h3{
   margin: 0 0 6px;
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   letter-spacing: .3px;
 }
-.ceo-card p {
+.ceo-card p{
   margin: 0;
-  opacity: .9;
-  line-height: 1.5;
+  opacity: .92;
+  line-height: 1.55;
   font-size: .95rem;
 }
 
+/* Icon badge */
+.ceo-card__icon{
+  position: absolute;
+  left: 14px; top: 16px;
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(255,255,255,0.35)),
+    linear-gradient(135deg, rgba(212,175,55,0.85), rgba(118,201,214,0.75));
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.25),
+    0 0 0 3px rgba(255,255,255,0.15);
+}
+.ceo-card__icon .i{
+  width: 18px; height: 18px;
+  fill: #0a1a20; /* dark ink for contrast */
+  opacity: 0.9;
+}
+
+/* Hover delight */
+.ceo-card{
+  transition: transform .25s ease, box-shadow .25s ease, background .4s ease;
+}
+.ceo-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.28);
+}
+
+/* Optional shimmering sheen */
+.ceo-card{
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05)),
+    radial-gradient(120% 100% at 0% 0%, rgba(212,175,55,0.25), rgba(118,201,214,0.15) 50%, transparent 70%);
+  background-size: 100% 100%, 100% 100%;
+}
+.ceo-card:hover::before{
+  content:"";
+  position:absolute; inset:-1px;
+  background: linear-gradient(100deg, transparent 20%, rgba(255,255,255,0.25) 50%, transparent 80%);
+  mix-blend-mode: screen;
+  transform: translateX(-120%);
+  animation: sheen 1.2s ease forwards;
+}
+@keyframes sheen{ to{ transform: translateX(120%);} }
+
+/* Mobile fit & polish */
+@media (max-width: 860px){
+  .ceo-card{
+    max-width: min(44vw, 280px);
+    width: 100%;
+    padding: 16px 16px 16px 56px;
+  }
+  .ceo-card h3{ font-size: 1rem; }
+  .ceo-card p{ font-size: .92rem; }
+}
+@media (max-width: 360px){
+  .ceo-card{ max-width: min(46vw, 240px); padding: 14px 14px 14px 54px; }
+  .ceo-card__icon{ width: 32px; height: 32px; }
+  .ceo-card__icon .i{ width: 17px; height: 17px; }
+}
+
+
 /* Position the four cards (desktop/tablet) */
-#c1 { top: 8%;   left: 6%;  }   /* top-left */
-#c2 { top: 8%;   right: 6%; }   /* top-right */
-#c3 { bottom: 8%; left: 6%; }   /* bottom-left */
-#c4 { bottom: 8%; right: 6%; }  /* bottom-right */
+#c1 { grid-column: 1; grid-row: 1; }
+#c2 { grid-column: 3; grid-row: 1; }
+#c3 { grid-column: 1; grid-row: 3; }
+#c4 { grid-column: 3; grid-row: 3; }
 
 /* SVG arrows */
 .ceo-links {
-  position: absolute; inset: 0;
-  z-index: 1; /* under avatar, above bg */
-  pointer-events: none;
-}
+  display: block; 
+    position: absolute; 
+    inset: 0; 
+    z-index: 5;
+   }
+
 .ceo-link {
   fill: none;
   stroke: url(#lux-stroke);
@@ -1139,5 +1236,74 @@ body[data-bg="contact"] {
     height: 100%;
     pointer-events: none;
   }
+}
+/* Accessible focus state (keyboard/tab) */
+.ceo-card:focus {
+  outline: none;
+  box-shadow:
+    0 28px 60px rgba(0,0,0,0.28),
+    0 0 0 2px rgba(255,255,255,0.6),
+    0 0 0 4px rgba(212,175,55,0.55); /* gold ring */
+  transform: translateY(-3px);
+}
+
+/* Hover and focus share same polish */
+.ceo-card:hover,
+.ceo-card:focus-visible {
+  transform: translateY(-3px);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .ceo-card,
+  .ceo-card:hover,
+  .ceo-card:focus,
+  .ceo-card:focus-visible {
+    transition: none;
+    transform: none;
+  }
+}
+/* Section heading */
+.ceo-heading {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.ceo-heading h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, var(--gold), var(--duck));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.ceo-heading h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 2px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, var(--gold), var(--duck));
+  border-radius: 2px;
+  opacity: 0.85;
+}
+
+.ceo-heading p {
+  max-width: 600px;
+  margin: 14px auto 0;
+  font-size: 1rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Responsive polish */
+@media (max-width: 860px) {
+  .ceo-heading h2 { font-size: 1.6rem; }
+  .ceo-heading p  { font-size: .95rem; padding: 0 16px; }
 }
 

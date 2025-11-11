@@ -205,17 +205,21 @@ document.addEventListener('submit', e => {
     const slides = Array.from(track.querySelectorAll('.slide')); // now includes clones
   
     let index = 1;            // start on the first REAL slide
-    let width = root.clientWidth;
+ 
   
     // Set initial position
+    function syncHeight(){
+      const activeSlide = slides[index];
+      if(!activeSlide) return;
+      const newHeight = activeSlide.offsetHeight;
+      if(newHeight) root.style.height = `${newHeight}px`;
+    }
+
     function setPosition(noAnim=false){
       if(noAnim) track.style.transition = 'none';
       track.style.transform = `translateX(-${index * 100}%)`;
-      const activeSlide = slides[index];
-  if (activeSlide) {
-    const newHeight = activeSlide.offsetHeight;
-    root.style.height = newHeight + "px";
-  }
+
+  syncHeight();
       if(noAnim){
         // force reflow then restore transition
         void track.offsetHeight;
@@ -274,12 +278,61 @@ document.addEventListener('submit', e => {
   
     // Swipe
     let startX = 0, dx = 0;
-    root.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive:true });
-    root.addEventListener('touchmove',  e => { dx = e.touches[0].clientX - startX; }, { passive:true });
-    root.addEventListener('touchend',   () => {
-      if (Math.abs(dx) > 40) { dx < 0 ? nextSlide() : prevSlide(); }
+    
+      const swipeThreshold = () => Math.min(60, root.clientWidth * 0.25);
+
+      function handleSwipeEnd(){
+        if (Math.abs(dx) > swipeThreshold()) {
+          dx < 0 ? nextSlide() : prevSlide();
+        }
       dx = 0;
-    });
+    }
+
+    // Pointer events (covering touch + pen where supported)
+    const supportsPointer = 'PointerEvent' in window;
+
+    if(supportsPointer){
+      let activePointerId = null;
+      root.addEventListener('pointerdown', e => {
+        if(e.pointerType === 'mouse' && e.button !== 0) return;
+        activePointerId = e.pointerId;
+        startX = e.clientX;
+        dx = 0;
+        root.setPointerCapture?.(activePointerId);
+      });
+      root.addEventListener('pointermove', e => {
+        if(e.pointerId !== activePointerId) return;
+        dx = e.clientX - startX;
+      });
+      root.addEventListener('pointerup', e => {
+        if(e.pointerId !== activePointerId) return;
+        handleSwipeEnd();
+        root.releasePointerCapture?.(activePointerId);
+        activePointerId = null;
+      });
+      root.addEventListener('pointercancel', () => {
+        dx = 0;
+        activePointerId = null;
+      });
+    }
+
+    // Touch fallback for older Safari
+    if(!supportsPointer){
+      root.addEventListener('touchstart', e => {
+        const touch = e.touches[0];
+        if(!touch) return;
+        startX = touch.clientX;
+        dx = 0;
+      }, { passive:true });
+      root.addEventListener('touchmove',  e => {
+        const touch = e.touches[0];
+        if(!touch) return;
+        dx = touch.clientX - startX;
+      }, { passive:true });
+      root.addEventListener('touchend',   () => {
+        handleSwipeEnd();
+      });
+    }
   
     // Autoplay (loop forever)
     let timer = setInterval(nextSlide, 5000);
@@ -292,8 +345,14 @@ document.addEventListener('submit', e => {
     root.addEventListener('focusout', start);
   
     // Resize safety (keeps transform aligned)
-    window.addEventListener('resize', ()=>{ width = root.clientWidth; setPosition(true); }, { passive:true });
-  
+    window.addEventListener('resize', ()=>{
+      syncHeight();
+      setPosition(true);
+    }, { passive:true });
+
+    // Ensure height is correct once media/fonts settle
+    window.addEventListener('load', syncHeight, { once: true });
+
     // Init
     updateDots();
   })();
@@ -389,7 +448,6 @@ document.addEventListener('submit', e => {
   viewport.addEventListener('mouseleave', startAuto);
   */
 })();
-// Draw elegant curved connectors from the central avatar to each card
 (function(){
   var section = document.querySelector('#ceo-profile');
   if (!section) return;
@@ -410,46 +468,90 @@ document.addEventListener('submit', e => {
     c4: section.querySelector('#c4')
   };
 
-  function centerOf(el){
-    var r = el.getBoundingClientRect();
-    var p = orbit.getBoundingClientRect();
-    return { x: (r.left + r.width/2) - p.left, y: (r.top + r.height/2) - p.top };
+  function bb(el){ return el.getBoundingClientRect(); }
+  function centerInOrbit(el){ var r=bb(el), p=bb(orbit); return {x:(r.left+r.width/2)-p.left, y:(r.top+r.height/2)-p.top}; }
+
+  // pick the nearest corner of the card from the avatar center
+  function targetCorner(card, avatarCenter){
+    var r = bb(card), p = bb(orbit);
+    var corners = [
+      { x: r.left - p.left,           y: r.top  - p.top  },                 // TL
+      { x: r.right - p.left,          y: r.top  - p.top  },                 // TR
+      { x: r.left - p.left,           y: r.bottom - p.top },                // BL
+      { x: r.right - p.left,          y: r.bottom - p.top }                 // BR
+    ];
+    var best = corners[0], bestD = Infinity;
+    for (var i=0;i<corners.length;i++){
+      var dx = corners[i].x - avatarCenter.x, dy = corners[i].y - avatarCenter.y;
+      var d = dx*dx + dy*dy;
+      if (d < bestD){ bestD = d; best = corners[i]; }
+    }
+    return best;
   }
 
-  function edgePointTowards(from, to, radius){
-    // point on the avatar circle edge towards "to"
-    var dx = to.x - from.x, dy = to.y - from.y;
-    var len = Math.max(1, Math.hypot(dx, dy));
-    return { x: from.x + dx/len * radius, y: from.y + dy/len * radius };
+  function edgePoint(from, to, radius){
+    var dx = to.x - from.x, dy = to.y - from.y, L = Math.max(1, Math.hypot(dx, dy));
+    return { x: from.x + dx/L * radius, y: from.y + dy/L * radius };
+  }
+
+  function insetPoint(from, to, inset){
+    var dx = to.x - from.x, dy = to.y - from.y, L = Math.max(1, Math.hypot(dx, dy));
+    return { x: to.x - dx/L * inset, y: to.y - dy/L * inset };
   }
 
   function draw(){
-    // Hide lines on mobile (CSS already does; skip work)
-    if (window.matchMedia('(max-width: 860px)').matches) return;
+    if (!orbit || !avatar || !svg) return;
 
-    var avCenter = centerOf(avatar);
-    var avRadius = avatar.getBoundingClientRect().width / 2;
+    var ob = bb(orbit);
+    svg.setAttribute('viewBox', `0 0 ${ob.width} ${ob.height}`);
 
-    Object.keys(cards).forEach(function(key){
-      var card = cards[key];
-      var path = paths[key];
+    var aC = centerInOrbit(avatar);
+    var aR = bb(avatar).width / 2;
+
+    Object.keys(cards).forEach(function(k){
+      var card = cards[k], path = paths[k];
       if (!card || !path) return;
 
-      var cardCenter = centerOf(card);
-      var start = edgePointTowards(avCenter, cardCenter, avRadius + 6);
+      // Arrow should start at avatar edge and end near the closest corner of the card
+      var corner = targetCorner(card, aC);
+      var start  = edgePoint(aC, corner, aR + 6);
+      var end    = insetPoint(start, corner, 10);  // stop 10px before corner so the marker sits nicely
 
-      // control point for a gentle curve (biased toward vertical offset)
-      var cx = (start.x + cardCenter.x) / 2;
-      var cy = (start.y + cardCenter.y) / 2 + (cardCenter.y < avCenter.y ? -60 : 60);
+      // Control point: gentle curve biased away from the avatar → card direction
+      var midX = (start.x + end.x)/2, midY = (start.y + end.y)/2;
+      var biasX = (end.x < aC.x) ? -40 : 40;
+      var biasY = (end.y < aC.y) ? -60 : 60;
+      var cx = midX + biasX, cy = midY + biasY;
 
-      var d = `M ${start.x},${start.y} Q ${cx},${cy} ${cardCenter.x},${cardCenter.y}`;
-      path.setAttribute('d', d);
+      path.setAttribute('d', `M ${start.x},${start.y} Q ${cx},${cy} ${end.x},${end.y}`);
+
+      // If you added a dashed glow clone, mirror the same 'd' there as well:
+      var glow = path.nextElementSibling;
+      if (glow && glow.classList && glow.classList.contains('glow')) {
+        glow.setAttribute('d', path.getAttribute('d'));
+      }
     });
   }
 
-  // Redraw on load and when resizing
-  window.addEventListener('load', draw);
-  window.addEventListener('resize', function(){ requestAnimationFrame(draw); });
-  // If fonts/images shift layout after load, run again
-  setTimeout(draw, 300);
+  function safeDraw(){ requestAnimationFrame(function(){ setTimeout(draw, 50); }); }
+
+  window.addEventListener('load', safeDraw, { once: true });
+  window.addEventListener('resize', safeDraw);
+  window.addEventListener('orientationchange', function(){ setTimeout(safeDraw, 120); });
+
+  if (avatar && avatar.complete === false) avatar.addEventListener('load', safeDraw, { once: true });
+
+  var ro = new ResizeObserver(safeDraw);
+  ro.observe(orbit);
+  Object.values(cards).forEach(function(el){ if (el) ro.observe(el); });
 })();
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.AOS && typeof AOS.init === 'function') {
+    AOS.init({
+      once: true,           // animate once
+      duration: 700,        // smooth, premium
+      easing: 'ease-out',
+      offset: 60
+    });
+  }
+});
