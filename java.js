@@ -555,3 +555,72 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+(function(){
+  var viewport = document.querySelector('.pillars-viewport');
+  var cards    = document.querySelectorAll('.pillar-card');
+  if (!viewport || !cards.length) return;
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        // micro fade/slide
+        e.target.animate(
+          [{ opacity:0, transform:'translateY(8px)' }, { opacity:1, transform:'translateY(0)' }],
+          { duration:450, easing:'ease-out' }
+        );
+      }
+    });
+  }, { root: viewport, threshold: 0.6 });
+
+  cards.forEach(c => io.observe(c));
+})();
+
+// INAYA FAQ accordion
+(function(){
+  var items = document.querySelectorAll('.faq-item');
+  if (!items.length) return;
+
+  items.forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    var panel = item.querySelector('.faq-a');
+    if (!btn || !panel) return;
+
+    // measure content for smooth height animation
+    function setMax(open){
+      if (open) {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+        panel.setAttribute('aria-hidden','false');
+        btn.setAttribute('aria-expanded','true');
+        item.classList.add('open');
+      } else {
+        panel.style.maxHeight = '0px';
+        panel.setAttribute('aria-hidden','true');
+        btn.setAttribute('aria-expanded','false');
+        item.classList.remove('open');
+      }
+    }
+
+    // start collapsed
+    setMax(false);
+
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      // If you want only one open at a time, close others:
+      // items.forEach(i => { if (i!==item) { var b=i.querySelector('.faq-q'); var p=i.querySelector('.faq-a'); if(b&&p){ b.setAttribute('aria-expanded','false'); p.style.maxHeight='0px'; p.setAttribute('aria-hidden','true'); i.classList.remove('open'); } } });
+      setMax(!open);
+    });
+
+    // keyboard support (Enter/Space)
+    btn.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
+    });
+
+    // re-measure if content wraps differently on resize
+    window.addEventListener('resize', function(){
+      if (btn.getAttribute('aria-expanded') === 'true') {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+})();
