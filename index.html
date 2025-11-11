@@ -125,38 +125,81 @@
   </div>
 </section>
 
-  
-      <!-- PAIN -> PROMISE -->
-      <section class="block">
-        <div class="container narrow center">
-          <h2 class="kicker">Strong outside, scattered inside?</h2>
-          <p class="big">
-            INAYA helps you find inner order without losing your edge — mastering calm, connection, and clarity in motion.
-          </p>
-        </div>
-      </section>
-  
-      <!-- IMAGE BREAK -->
-      <section class="fullbleed">
-        <img src="image/image05.jpg" alt="Soft neutral textures, minimal">
-      </section>
-  
-      <!-- VALUE POINTS -->
-      <section class="block">
-        <div class="container narrow">
-          <ul class="dash-list">
-            <li>controlled feeling (regulation ≠ suppression)</li>
-            <li>identity beyond performance</li>
-            <li>self-sense: language for needs & boundaries</li>
-            <li>closeness without losing autonomy</li>
-          </ul>
-        </div>
-      </section>
-  
-      <!-- IMAGE BREAK -->
-      <section class="fullbleed">
-        <img src="image/image04.jpg" alt="Natural light scene, calm palette">
-      </section>
+ <!-- Trusted By Banner -->
+<section id="trusted-by" class="trusted-by">
+  <div class="trusted-inner">
+    <button class="trusted-arrow left" aria-label="Previous"></button>
+
+    <!-- Viewport: full-width, scrollable -->
+    <div class="trusted-viewport" aria-label="Trusted brands carousel">
+      <!-- Track: wide flex row -->
+      <div class="trusted-track">
+        <!-- Tip: prefer SVGs or transparent PNGs around same height -->
+        <img src="image/logo1.png" alt="Company 1" />
+        <img src="image/logo2.png" alt="Company 2" />
+        <img src="image/logo3.png" alt="Company 3" />
+        <img src="image/logo4.png" alt="Company 4" />
+        <img src="image/logo5.png" alt="Company 5" />
+        <!-- add/remove as needed -->
+      </div>
+    </div>
+
+    <button class="trusted-arrow right" aria-label="Next"></button>
+  </div>
+
+  <p class="trusted-title">Trusted by visionary organizations worldwide</p>
+</section>
+
+<!-- CEO Profile -->
+<section id="ceo-profile" class="ceo-profile">
+  <div class="container">
+    <div class="ceo-orbit">
+      <!-- Central portrait -->
+      <img class="ceo-avatar" src="image/ceo-portrait.jpg" alt="Laura M., Founder & CEO of INAYA" />
+
+      <!-- Curved arrow lines (drawn by JS) -->
+      <svg class="ceo-links" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <!-- gold → duck-blue gradient -->
+          <linearGradient id="lux-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d4af37" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#76c9d6" stop-opacity="0.9"/>
+          </linearGradient>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="url(#lux-stroke)" opacity="0.85"/>
+          </marker>
+        </defs>
+        <path id="link-c1" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
+        <path id="link-c2" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
+        <path id="link-c3" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
+        <path id="link-c4" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
+      </svg>
+
+      <!-- Cards -->
+      <article id="c1" class="ceo-card">
+        <h3>Background</h3>
+        <p>Former strategy consultant turned coach. 10+ years guiding leaders through growth and change.</p>
+      </article>
+
+      <article id="c2" class="ceo-card">
+        <h3>Philosophy</h3>
+        <p>Calm first, clarity next, then bold action. Inner order creates outer excellence.</p>
+      </article>
+
+      <article id="c3" class="ceo-card">
+        <h3>Expertise</h3>
+        <p>Emotional regulation, self-leadership, executive presence, and values-aligned performance.</p>
+      </article>
+
+      <article id="c4" class="ceo-card">
+        <h3>Credentials</h3>
+        <p>ICF-accredited training, trauma-informed practice, and continuous research in applied psychology.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+      
   
       <!-- PILLARS (coaching / retreat / beautology / academy) -->
       <section class="block">
@@ -185,10 +228,7 @@
         </div>
       </section>
   
-      <!-- FINAL IMAGE -->
-      <section class="fullbleed">
-        <img src="image/image06.jpg" alt="Quiet strength visual">
-      </section>
+     
   
        <!-- SOCIAL PROOF -->
       <section class="block reveal" aria-labelledby="proof-title">

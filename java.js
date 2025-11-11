@@ -297,7 +297,6 @@ document.addEventListener('submit', e => {
     // Init
     updateDots();
   })();
-  setPosition(true);
 // CEO video play handling (supports MP4 and YouTube privacy embed)
 (function () {
   var frames = document.querySelectorAll('.ceo-video__frame');
@@ -331,4 +330,126 @@ document.addEventListener('submit', e => {
       }
     }, { passive: true });
   });
+})();
+(function(){
+  var viewport = document.querySelector('.trusted-viewport');
+  var track    = document.querySelector('.trusted-track');
+  var leftBtn  = document.querySelector('.trusted-arrow.left');
+  var rightBtn = document.querySelector('.trusted-arrow.right');
+
+  if (!viewport || !track || !leftBtn || !rightBtn) return;
+
+  // Step equals ~80% of the visible area for meaningful jumps
+  function getStep() {
+    return Math.max(200, Math.floor(viewport.clientWidth * 0.8));
+  }
+
+  rightBtn.addEventListener('click', function(){
+    viewport.scrollBy({ left:  getStep(), behavior: 'smooth' });
+  });
+  leftBtn.addEventListener('click', function(){
+    viewport.scrollBy({ left: -getStep(), behavior: 'smooth' });
+  });
+
+  // Optional: drag/swipe support for desktop (mobile already scrolls)
+  var isDown = false, startX = 0, startScroll = 0;
+
+  viewport.addEventListener('pointerdown', function(e){
+    isDown = true;
+    viewport.setPointerCapture(e.pointerId);
+    startX = e.clientX;
+    startScroll = viewport.scrollLeft;
+  });
+  viewport.addEventListener('pointermove', function(e){
+    if (!isDown) return;
+    var dx = e.clientX - startX;
+    viewport.scrollLeft = startScroll - dx;
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(function(type){
+    viewport.addEventListener(type, function(){ isDown = false; });
+  });
+
+  // Optional: auto loop (very gentle)
+  // Uncomment to enable
+  /*
+  var auto;
+  function startAuto(){
+    stopAuto();
+    auto = setInterval(function(){
+      viewport.scrollBy({ left: 1, behavior: 'auto' });
+      // If reached end, jump back to start seamlessly
+      if (viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 2) {
+        viewport.scrollTo({ left: 0, behavior: 'auto' });
+      }
+    }, 15);
+  }
+  function stopAuto(){ if (auto) clearInterval(auto); }
+  startAuto();
+  viewport.addEventListener('mouseenter', stopAuto);
+  viewport.addEventListener('mouseleave', startAuto);
+  */
+})();
+// Draw elegant curved connectors from the central avatar to each card
+(function(){
+  var section = document.querySelector('#ceo-profile');
+  if (!section) return;
+
+  var orbit   = section.querySelector('.ceo-orbit');
+  var avatar  = section.querySelector('.ceo-avatar');
+  var svg     = section.querySelector('.ceo-links');
+  var paths   = {
+    c1: section.querySelector('#link-c1'),
+    c2: section.querySelector('#link-c2'),
+    c3: section.querySelector('#link-c3'),
+    c4: section.querySelector('#link-c4')
+  };
+  var cards = {
+    c1: section.querySelector('#c1'),
+    c2: section.querySelector('#c2'),
+    c3: section.querySelector('#c3'),
+    c4: section.querySelector('#c4')
+  };
+
+  function centerOf(el){
+    var r = el.getBoundingClientRect();
+    var p = orbit.getBoundingClientRect();
+    return { x: (r.left + r.width/2) - p.left, y: (r.top + r.height/2) - p.top };
+  }
+
+  function edgePointTowards(from, to, radius){
+    // point on the avatar circle edge towards "to"
+    var dx = to.x - from.x, dy = to.y - from.y;
+    var len = Math.max(1, Math.hypot(dx, dy));
+    return { x: from.x + dx/len * radius, y: from.y + dy/len * radius };
+  }
+
+  function draw(){
+    // Hide lines on mobile (CSS already does; skip work)
+    if (window.matchMedia('(max-width: 860px)').matches) return;
+
+    var avCenter = centerOf(avatar);
+    var avRadius = avatar.getBoundingClientRect().width / 2;
+
+    Object.keys(cards).forEach(function(key){
+      var card = cards[key];
+      var path = paths[key];
+      if (!card || !path) return;
+
+      var cardCenter = centerOf(card);
+      var start = edgePointTowards(avCenter, cardCenter, avRadius + 6);
+
+      // control point for a gentle curve (biased toward vertical offset)
+      var cx = (start.x + cardCenter.x) / 2;
+      var cy = (start.y + cardCenter.y) / 2 + (cardCenter.y < avCenter.y ? -60 : 60);
+
+      var d = `M ${start.x},${start.y} Q ${cx},${cy} ${cardCenter.x},${cardCenter.y}`;
+      path.setAttribute('d', d);
+    });
+  }
+
+  // Redraw on load and when resizing
+  window.addEventListener('load', draw);
+  window.addEventListener('resize', function(){ requestAnimationFrame(draw); });
+  // If fonts/images shift layout after load, run again
+  setTimeout(draw, 300);
 })();
