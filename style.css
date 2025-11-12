@@ -1,11 +1,14 @@
 :root{
-    --bg:#462c35;           /* warm white */
-    --ink:#c6a166;          /* charcoal */
-    --muted:#5f5f5f;        /* soft grey */
-    --accent:#9f8f96;       /* soft taupe-rose */
-    --accent-ink:#eadfc8;   /* on accent */
-    --card:#ffffff;         /* surfaces */
+  --bg:#462c35;               /* deep plum backdrop */
+  --ink:#c6a166;              /* warm typography */
+  --muted:#5f5f5f;            /* soft grey */
+  --accent:#9f8f96;           /* taupe rose */
+  --accent-ink:#eadfc8;       /* contrast on accent */
+  --card:#ffffff;   
     --ring:rgba(207,164,160,.45);
+    --gold:#d4af37;             /* highlight accents */
+    --gold-gradient:linear-gradient(135deg,#f4c77b,#d4af37);
+    --duck:#c6a166;    
   }
   
   /* Base */
@@ -82,7 +85,8 @@
   .btn{
     display:inline-block; padding:.75rem 1.1rem; border-radius:.7rem;
     border:1px solid rgba(0,0,0,.1); background:var(--card);
-    box-shadow:0 1px 0 rgba(0,0,0,.03); transition:transform .12s ease
+    box-shadow:0 1px 0 rgba(0,0,0,.03); transition:transform .12s ease;
+    cursor:pointer;
   }
   .btn:hover{transform:translateY(-1px)}
   .btn-primary{background:var(--accent); color:var(--accent-ink); border-color:transparent}
@@ -466,9 +470,9 @@
 /* ✨ Page backgrounds */
 body[data-bg="main"] {
   background: linear-gradient(180deg,
-    rgba(199, 128, 128, 0.465) 0%,
-    rgba(140, 69, 69, 0.619) 40%,
-    rgba(156, 71, 71, 0.401) 100%);
+    rgba(70, 44, 53, 0.465) 0%,
+    rgba(98, 64, 83, 0.619) 40%,
+    rgba(159, 143, 150, 0.401) 100%);
 }
 
 body[data-bg="services"] {
@@ -512,6 +516,7 @@ body[data-bg="contact"] {
 
 .carousel-track {
   display: flex;
+  align-items: center;   /* ensures vertical centering */
   transition: transform .35s ease;
   will-change: transform;
 }
@@ -1049,14 +1054,6 @@ body[data-bg="contact"] {
 }
 
 /* Cards styling */
-/* Brand tokens (tweak if needed) */
-:root{
-  --gold: #d4af37;
-  --duck: #76c9d6;
-  --ink:  #0c1b1f;
-  --glass: rgba(255,255,255,0.08);
-}
-
 /* Card surface */
 .ceo-card{
   position: absolute;
