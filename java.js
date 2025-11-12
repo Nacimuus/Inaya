@@ -624,3 +624,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 })();
+document.addEventListener('DOMContentLoaded', function(){
+  const form = document.getElementById('ebookForm');
+  if (!form) return;
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+
+    if (!name || !email) {
+      alert('Please enter your name and email.');
+      return;
+    }
+
+    alert(`Thank you ${name}! Your eBook will be sent to ${email}.`);
+    form.reset();
+  });
+});
