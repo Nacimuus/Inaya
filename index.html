@@ -29,41 +29,57 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" integrity="sha384-+S0Zjfy2qhDQzduQ5xOQ1pCwzJB2+VpBZXGZ+rsoAhH4mPy2tnCIlF1Na1jE9+KQ" crossorigin="anonymous" />
+<script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js" integrity="sha384-6DsbmMdvVWx9YtcoF1Ja1USe7/pLqE5hCVKBknAo6A9UpAJZciV06P88eaJEo3mT" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+<script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script defer src="java.js"></script>
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
-  <!-- Scripts (handles header/footer injection + mobile nav) -->
-  <script defer src="java.js"></script>
+  
 </head>
-<body>
+
+  <body data-bg="main"></body>
   <!-- Shared header gets injected here from /partials/header.html -->
     <div id="header-include"></div>
-    <body data-bg="main">
+   
 
   
     <main>
   
-      <section class="hero-luxury" aria-label="INAYA main hero">
-        <img src="image/hero-inaya .png" alt="INAYA coaching and academy" class="hero-image">
+      <section id="hero" class="hero">
+        <div class="container hero-grid">
       
-        <!-- Top-left content -->
-        <div class="hero-content hero-top-left">
-          <h1>1:1 Coaching</h1>
-          <p>Personal transformation through calm structure, emotional regulation, and self-leadership.</p>
-          <a href="contact.html" class="btn btn-primary">Book a Discovery Call</a>
-        </div>
+          <!-- LEFT SIDE – TEXT -->
+          <div class="hero-copy" data-aos="fade-right">
+            <p class="hero-kicker">Für ENTJ-Frauen, die alles managen – außer ihre Innenwelt.</p>
       
-        <!-- Bottom-right content -->
-        <div class="hero-content hero-bottom-right">
-          <h2>INAYA Academy</h2>
-          <p>Collective growth & experiential learning — structure without overwhelm.</p>
-          <a href="services.html" class="btn">Explore the Academy</a>
+            <h1>Du funktionierst perfekt.  
+            Aber innerlich fehlt etwas.</h1>
+      
+            <p class="hero-text">
+              INAYA ist ein psychologisch fundiertes System für ENTJ-Kommandeurinnen, die nach außen
+              alles im Griff haben, aber innerlich kaum Zugang zu sich selbst spüren. In 8 Wochen lernst du,
+              deine Emotionen zu verstehen, inneren Druck zu regulieren und eine Identität aufzubauen,
+              die nicht nur auf Leistung basiert.
+            </p>
+      
+            <div class="hero-cta-group">
+              <a href="#kontakt" class="btn btn-gradient">Kostenloses Erstgespräch</a>
+              <a href="#was-ist-inaya" class="btn btn-outline">Mehr über das Programm</a>
+            </div>
+      
+            <p class="hero-note">
+              Psychologisch fundiert, nervensystemfreundlich, speziell für ENTJ-Frauen im DACH-Raum.
+            </p>
+          </div>
+      
+          <!-- RIGHT SIDE – IMAGE -->
+          <figure class="hero-media" data-aos="fade-left">
+            <img src="image/hero-laura.jpg" alt="Laura – Gründerin der INAYA Academy" />
+          </figure>
+      
         </div>
       </section>
+      
       
       <!-- Was ist Inaya -->
       <section id="was-ist-inaya" class="section inaya">
@@ -93,6 +109,41 @@
         </div>
       </section>
 
+
+      <!-- Vier konkrete Veränderungen-->
+      <section class="section inaya-highlights">
+        <div class="container narrow" data-aos="fade-up">
+          <h2 class="inaya-highlights-title">
+            Was INAYA in dir verändert
+          </h2>
+          <p class="inaya-highlights-intro">
+            INAYA entwickelt deine Blindspots und stärkt deine Ressourcen.  
+            Es geht nicht nur um Selbstoptimierung, sondern darum, dein noch unentwickeltes Yin
+            zu deinem bereits entwickelten Yang zu bringen – für echte Erfüllung und Präsenz von innen.
+          </p>
+      
+          <ul class="inaya-highlights-list">
+            <li>
+              <span class="bullet-dot"></span>
+              <span>statt innerer Leere <strong>Ruhe und Stabilität in dir selbst</strong></span>
+            </li>
+            <li>
+              <span class="bullet-dot"></span>
+              <span><strong>Emotionen bewusst fühlen und regulieren</strong>, anstatt sie nur zu kontrollieren</span>
+            </li>
+            <li>
+              <span class="bullet-dot"></span>
+              <span><strong>Nähe statt Distanz</strong> leben – ohne unangenehmen Beigeschmack</span>
+            </li>
+            <li>
+              <span class="bullet-dot"></span>
+              <span><strong>Lösen deiner Leistungsidentität</strong>: „Ich bin nur jemand, wenn ich etwas leiste“</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+      
+
 <!-- Upcoming Retreat Banner -->
 <section class="retreat-banner" aria-label="Upcoming INAYA Retreat">
   <div class="banner-logo left">
@@ -118,11 +169,11 @@
 <section id="ceo-video" class="section ceo-video">
   <img src="image/ceo-hero.png" alt="Luxury textured background" class="ceo-bg" />
 
+
   <div class="container">
-  <div class="container">
-    <div class="ceo-video__header">
+    <div class="ceo-video__header" data-aos="fade-left">
       <h2>Platzhalter: Hauptportrait von Laura</h2>
-      <p><div class="ceo-copy" data-aos="fade-left">
+      <div class="ceo-copy">
         <h2>Meet Our CEO</h2>
         <p class="ceo-kicker">Laura Kowarz – ENTJ-A, Psychologin, Gründerin von INAYA</p>
   
@@ -140,16 +191,15 @@
         <div class="ceo-gallery">
           <!-- Platzhalter: zusätzliche Fotos (Workshop, Retreat, Alltag) -->
           <img src="image/laura-speaking.jpg" alt="Laura – Speaking / Workshop" />
-          <img src="image/laura-retreat.jpg" alt="Laura – Retreat Moment" /></p>
+          <img src="image/laura-retreat.jpg" alt="Laura – Retreat Moment" />
+        </div>
+      </div>
     </div>
 
-  
-    <div class="ceo-video__frame" data-player="youtube" data-src="https://www.youtube.com/watch?time_continue=1&v=ercjEwyB5vA&embeds_referring_euri=https%3A%2F%2Finaya-academy.de%2F">
+    <div class="ceo-video__frame" data-player="youtube" data-src="https://www.youtube.com/embed/ercjEwyB5vA?autoplay=1&rel=0&modestbranding=1">
       <button class="ceo-video__play" aria-label="Play video"></button>
       <div class="ceo-video__thumb">
-        <img src="ceo-poster.jpg" alt="CEO presentation thumbnail" loading="lazy" />
-
-        
+        <img src="image/ceo-hero.png" alt="CEO presentation thumbnail" loading="lazy" />
       </div>
     </div>
   </div>
@@ -177,6 +227,17 @@
     </p>
   </div>
 </section>
+
+<!-- potential intro -->
+<section class="section potential-intro">
+  <div class="container narrow" data-aos="fade-up">
+    <p class="potential-kicker">Nutze dein volles Potenzial!</p>
+    <h2 class="potential-title">
+      Was dich erwartet, wenn du Ratio &amp; Emotion zusammengebracht hast:
+    </h2>
+  </div>
+</section>
+
 
 
 <!-- key results -->
@@ -211,6 +272,92 @@
     </div>
   </div>
 </section>
+
+<!-- Erfolge“ & Fallbeispiel Ornella-->
+<section class="section erfolge">
+  <div class="container narrow">
+    <h2 class="section-title" data-aos="fade-up">Erfolge</h2>
+
+    <p class="erfolge-intro" data-aos="fade-up" data-aos-delay="60">
+      Echtes Fachwissen und die Spezialisierung auf ENTJ und deren Blindspots, kombiniert mit
+      der eigenen Erfahrung als ENTJ, sorgen für beste Ergebnisse.
+      Sieh dir an, wie INAYA klassische Themen transformiert und damit Leben verändert.
+    </p>
+    <p class="erfolge-intro" data-aos="fade-up" data-aos-delay="120">
+      Mit unseren bewährten Strategien haben sich die persönlichen und dadurch auch beruflichen
+      Lebensbereiche unserer Klientinnen in ihrem Wert signifikant messbar angehoben.
+      Es wurde endlich der innere Frieden geschaffen, den sie sich ersehnt haben.
+    </p>
+
+    <article class="case" data-aos="fade-up" data-aos-delay="200">
+      <h3 class="case-title">Fallbeispiel: Ornella</h3>
+      <div class="case-columns">
+        <div class="case-block">
+          <h4>Problem</h4>
+          <p>
+            Ornella lebte permanent im Außen und hatte als Influencerin den ständigen Druck,
+            der Erwartungshaltung gerecht zu werden: ihre Figur zu halten, konsequent Content
+            zu posten, präsent zu sein bei allen wichtigen Events und vielem mehr.
+          </p>
+          <p>
+            Sie war so sehr auf das Außen fokussiert, dass sie sich selbst und ihre Bedürfnisse
+            kaum noch spürte. Innere Leere, Angstzustände und Rastlosigkeit kamen immer dann,
+            wenn sie allein und für sich war.
+          </p>
+        </div>
+
+        <div class="case-block">
+          <h4>Lösung</h4>
+          <p>
+            Durch die Arbeit mit ihren inneren Anteilen lernte sie ihren „Manager-Anteil“ kennen
+            und die dahinterliegenden Muster. Themen wie Selbstwerterhaltung und Glaubenssätze
+            wurden aufgedeckt und effizient transformiert.
+          </p>
+          <p>
+            Mithilfe therapeutischer Übungen und konkreter Anleitungen wurde die langfristige
+            Transformation sichergestellt – hin zu mehr innerer Ruhe, Selbstwert und Klarheit.
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<!-- Dein Support System“ & „Dein Expertenvorteil -->
+<section class="section support-expert">
+  <div class="container">
+    <div class="support-expert-grid">
+      <!-- Support System -->
+      <div class="support-card" data-aos="fade-up" data-aos-delay="0">
+        <h2>Dein Support System</h2>
+        <p>
+          Entwicklung braucht meist äußeren Input mit den richtigen Systemen.
+          Alle INAYA Powerfrauen kennen die Spannungen zwischen Leistung, Kontrolle und Erschöpfung.
+        </p>
+        <p>
+          Neben Laura begleiten sie dich auf diesem Weg und ticken wie du –
+          aber nicht mit Ratschlägen, sondern mit Inspiration, Präzision und Verständnis.
+        </p>
+      </div>
+
+      <!-- Expertenvorteil -->
+      <div class="expert-card" data-aos="fade-up" data-aos-delay="120">
+        <h2>Dein Expertenvorteil</h2>
+        <p>
+          Erhalte Zugang zu praxisorientiertem Fachwissen und den fundiertesten wissenschaftlichen
+          Methoden, spezifisch auf deine Themen.
+        </p>
+        <p>
+          Mit einem umfangreichen Repertoire an verschiedenen Methoden aus dem NLP, Embodiment
+          und vielem mehr bietet INAYA eine langfristig umsetzbare Struktur mit Tiefgang – für
+          echte, nachhaltige Veränderung statt kurzfristiger Motivation.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- offer -->
 <section id="angebote" class="section offers">
@@ -403,75 +550,6 @@
   <p class="trusted-title">Trusted by visionary organizations worldwide</p>
 </section>
 
-<!-- CEO Profile -->
-
-<section id="ceo-profile" class="ceo-profile">
-  <div class="ceo-heading">
-    <h2>Meet Our CEO</h2>
-    <p>Discover the woman behind INAYA’s vision — blending strategy, empathy, and inner mastery.</p>
-
-    <div class="ceo-orbit">
-      <!-- Central portrait -->
-      <img class="ceo-avatar" src="image/joke1.jpeg" alt="Laura M., Founder & CEO of INAYA" />
-
-      <!-- Curved arrow lines (drawn by JS) -->
-      <svg class="ceo-links" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
-          <!-- gold → duck-blue gradient -->
-          <linearGradient id="lux-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#d4af37" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#76c9d6" stop-opacity="0.9"/>
-          </linearGradient>
-          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-            <path d="M0,0 L10,5 L0,10 Z" fill="url(#lux-stroke)" opacity="0.85"/>
-          </marker>
-        </defs>
-        <path id="link-c1" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
-        <path id="link-c2" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
-        <path id="link-c3" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
-        <path id="link-c4" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
-      </svg>
-
-      <!-- Cards -->
-      <article id="c1" class="ceo-card" tabindex="0" data-aos="fade-up" data-aos-delay="0"> 
-        <span class="ceo-card__icon" aria-hidden="true">
-          <!-- Compass / background -->
-          <svg viewBox="0 0 24 24" class="i"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm3.9 3.9-2.2 6.6-6.6 2.2 2.2-6.6 6.6-2.2Zm-3.9 5.6a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
-        </span>
-        <h3>Background</h3>
-        <p>the best woman in the world e.</p>
-      </article>
-      
-      <article id="c2" class="ceo-card" tabindex="0" data-aos="fade-up" data-aos-delay="80">
-        <span class="ceo-card__icon" aria-hidden="true">
-          <!-- Feather / philosophy -->
-          <svg viewBox="0 0 24 24" class="i"><path d="M20 4c-5 0-9 4-9 9v1H8l-4 4 1 1 4-4v3h1c5 0 9-4 9-9V4Z"/></svg>
-        </span>
-        <h3>Philosophy</h3>
-        <p>Calm first, clarity next, then bold action. Inner order creates outer excellence.</p>
-      </article>
-      
-      <article id="c3" class="ceo-card" tabindex="0" data-aos="fade-up" data-aos-delay="160">
-        <span class="ceo-card__icon" aria-hidden="true">
-          <!-- Target / expertise -->
-          <svg viewBox="0 0 24 24" class="i"><path d="M12 4a8 8 0 1 0 8 8h-2a6 6 0 1 1-6-6V4Zm0 4a4 4 0 1 0 4 4h-2a2 2 0 1 1-2-2V8Z"/></svg>
-        </span>
-        <h3>Expertise</h3>
-        <p>Emotional regulation, self-leadership, executive presence, and values-aligned performance.</p>
-      </article>
-      
-      <article id="c4" class="ceo-card" tabindex="0" data-aos="fade-up" data-aos-delay="240"> 
-        <span class="ceo-card__icon" aria-hidden="true">
-          <!-- Shield / credentials -->
-          <svg viewBox="0 0 24 24" class="i"><path d="M12 2 4 5v6c0 5 3.3 8.7 8 11 4.7-2.3 8-6 8-11V5l-8-3Zm0 4.2 6 2.2v2.6c0 3.8-2.2 6.7-6 8.8-3.8-2.1-6-5-6-8.8V8.4l6-2.2Z"/></svg>
-        </span>
-        <h3>Credentials</h3>
-        <p>ICF-accredited training, NLP practicionner and other degrees</p>
-      </article>
-      
-</section>
-
-      
   
     <!-- INAYA Academy — Four Pillars (image tiles) -->
 <section id="academy" class="academy">
@@ -621,35 +699,7 @@
   </div>
 </section>
 
-  <!-- Coaching Intro -->
-<section id="coaching-intro" class="coaching-intro">
-  <div class="container">
-    <div class="coaching-grid">
-      <!-- Left: Text -->
-      <div class="coaching-copy" data-aos="fade-right">
-        <h2>1:1 & Group Coaching</h2>
-        <p>
-          INAYA coaching blends calm nervous-system work with sharp strategy so you move from
-          overwhelm to grounded action. We focus on what truly shifts results: clarity, emotional
-          regulation, and aligned execution.
-        </p>
-        <ul class="coaching-bullets">
-          <li>Personalized roadmap & rituals</li>
-          <li>Mindset, relationships, career, wellbeing</li>
-          <li>Action sessions + reflection & feedback</li>
-        </ul>
-
-        <a href="services.html#coaching" class="btn btn-gradient">Discover Coaching</a>
-      </div>
-
-      <!-- Right: Image -->
-      <figure class="coaching-media" data-aos="fade-left">
-        <img src="image/image04.jpg" alt="INAYA coaching — calm focus and guided action" loading="lazy" />
-      </figure>
-    </div>
-  </div>
-</section>
-
+  
      
   
        <!-- SOCIAL PROOF -->
