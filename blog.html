@@ -16,74 +16,105 @@
   <body data-bg="blog">
 
 
-  <main class="section">
-    <div class="container">
-      <header class="max-w">
-        <h1>Blog</h1>
-        <p class="muted">Short, clear pieces designed to be saved — not scrolled. Pick a topic to filter.</p>
-      </header>
-
-      <!-- Filters -->
-      <div class="filters">
-        <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
-        <button class="chip" data-filter="regulation">Emotional Regulation</button>
-        <button class="chip" data-filter="boundaries">Boundaries</button>
-        <button class="chip" data-filter="leadership">Leadership</button>
-        <button class="chip" data-filter="relationships">Relationships</button>
-        <button class="chip" data-filter="beauty">Beauty & Expression</button>
-        <button class="chip" data-filter="productivity">Productivity</button>
+    <main class="section">
+      <div class="container">
+        <header class="max-w">
+          <h1>Blog</h1>
+          <p class="muted">
+            Kurze, klare Impulse für ENTJ-Frauen – gemacht zum Abspeichern, nicht zum endlosen Scrollen.
+            Wähle ein Thema, um die Beiträge nach deinem aktuellen Fokus zu filtern.
+          </p>
+        </header>
+    
+        <!-- Filter -->
+        <div class="filters">
+          <button class="chip is-active" data-filter="all" aria-pressed="true">Alle</button>
+          <button class="chip" data-filter="regulation">Emotionale Regulation & Nervensystem</button>
+          <button class="chip" data-filter="boundaries">Grenzen & Nähe</button>
+          <button class="chip" data-filter="leadership">Selbstführung & Leadership</button>
+          <button class="chip" data-filter="relationships">Beziehungen</button>
+          <button class="chip" data-filter="beauty">Beauty & Ausdruck</button>
+          <button class="chip" data-filter="productivity">Fokus & Produktivität</button>
+        </div>
+    
+        <!-- Grid der Bubble Cards -->
+        <section class="blog-grid">
+    
+          <!-- Regulation / Relationships -->
+          <article class="bubble" data-tags="regulation relationships">
+            <a class="bubble-inner" href="#">
+              <img class="bubble-img" src="image/blog 2.png" alt="Weiches Portrait" loading="lazy">
+              <div class="bubble-copy">
+                <h3 class="bubble-title">Reguliert fühlen ≠ nichts fühlen</h3>
+                <p class="bubble-excerpt">
+                  Emotionale Regulation bedeutet nicht, Gefühle wegzudrücken, sondern sie sicher zu fühlen.
+                  Eine 90-Sekunden-Praxis, mit der du dein Nervensystem beruhigst, ohne deine Stärke zu verlieren.
+                </p>
+                <div class="bubble-meta">
+                  <time datetime="2025-10-02">2. Okt. 2025</time> · Emotionale Regulation
+                </div>
+              </div>
+            </a>
+          </article>
+    
+          <!-- Boundaries / Relationships -->
+          <article class="bubble" data-tags="boundaries relationships">
+            <a class="bubble-inner" href="#">
+              <img class="bubble-img" src="image/blog 1.png" alt="Warm minimalistisches Stillleben" loading="lazy">
+              <div class="bubble-copy">
+                <h3 class="bubble-title">Grenzen schützen Verbindung</h3>
+                <p class="bubble-excerpt">
+                  Für ENTJ-Frauen fühlen sich Grenzen oft wie „Abbruch“ an.
+                  Wie ein sauberer Satz dir erlaubt, nahe zu bleiben – und trotzdem bei dir zu bleiben.
+                </p>
+                <div class="bubble-meta">
+                  <time datetime="2025-09-21">21. Sep. 2025</time> · Grenzen & Nähe
+                </div>
+              </div>
+            </a>
+          </article>
+    
+          <!-- Leadership / Productivity -->
+          <article class="bubble" data-tags="leadership productivity">
+            <a class="bubble-inner" href="#">
+              <img class="bubble-img" src="blog-2025-08.jpg" alt="Notizbuch und Licht" loading="lazy">
+              <div class="bubble-copy">
+                <h3 class="bubble-title">Führen aus innerer Ruhe</h3>
+                <p class="bubble-excerpt">
+                  Dein Kopf kennt Tempo, dein Körper kennt Wahrheit.
+                  30 Sekunden Stillstand zwischen Meetings: ein Mikroritual, mit dem du Leadership
+                  von „funktionieren“ zu geerdeter Präsenz verschiebst.
+                </p>
+                <div class="bubble-meta">
+                  <time datetime="2025-08-30">30. Aug. 2025</time> · Selbstführung & Leadership
+                </div>
+              </div>
+            </a>
+          </article>
+    
+          <!-- Beauty / Leadership -->
+          <article class="bubble" data-tags="beauty leadership">
+            <a class="bubble-inner" href="#">
+              <img class="bubble-img" src="blog-2025-07.jpg" alt="Ruhige, neutrale Farbpalette" loading="lazy">
+              <div class="bubble-copy">
+                <h3 class="bubble-title">Beautologie nach innerer Ordnung</h3>
+                <p class="bubble-excerpt">
+                  Stil als Energie statt als Maske:
+                  warum Ausdruck kraftvoller wirkt, wenn deine Leistungsidentität nicht mehr
+                  der einzige Ort ist, an dem du dich spürst.
+                </p>
+                <div class="bubble-meta">
+                  <time datetime="2025-07-18">18. Jul. 2025</time> · Beauty & Ausdruck
+                </div>
+              </div>
+            </a>
+          </article>
+    
+        </section>
       </div>
-
-      <!-- Grid of bubble cards -->
-      <section class="blog-grid">
-        <!-- EXAMPLE CARDS — duplicate/edit as you publish -->
-        <article class="bubble" data-tags="regulation relationships">
-          <a class="bubble-inner" href="#">
-            <img class="bubble-img" src="image/blog 2.png" alt="Soft portrait" loading="lazy">
-            <div class="bubble-copy">
-              <h3 class="bubble-title">Controlled feeling ≠ control</h3>
-              <p class="bubble-excerpt">Regulation is learning to feel safely, not shutting down. A 90-second micro-practice you can try today.</p>
-              <div class="bubble-meta"><time datetime="2025-10-02">Oct 2, 2025</time> · Regulation</div>
-            </div>
-          </a>
-        </article>
-
-        <article class="bubble" data-tags="boundaries relationships">
-          <a class="bubble-inner" href="#">
-            <img class="bubble-img" src="image/blog 1.png" alt="Warm minimal still life" loading="lazy">
-            <div class="bubble-copy">
-              <h3 class="bubble-title">Boundaries protect connection</h3>
-              <p class="bubble-excerpt">How to set one clean sentence that keeps the door open and your center intact.</p>
-              <div class="bubble-meta"><time datetime="2025-09-21">Sep 21, 2025</time> · Boundaries</div>
-            </div>
-          </a>
-        </article>
-
-        <article class="bubble" data-tags="leadership productivity">
-          <a class="bubble-inner" href="#">
-            <img class="bubble-img" src="blog-2025-08.jpg" alt="Notebook and light" loading="lazy">
-            <div class="bubble-copy">
-              <h3 class="bubble-title">Lead with stillness</h3>
-              <p class="bubble-excerpt">30 seconds between meetings can change the next hour. Here’s how to make it a habit.</p>
-              <div class="bubble-meta"><time datetime="2025-08-30">Aug 30, 2025</time> · Leadership</div>
-            </div>
-          </a>
-        </article>
-
-        <article class="bubble" data-tags="beauty leadership">
-          <a class="bubble-inner" href="#">
-            <img class="bubble-img" src="blog-2025-07.jpg" alt="Calm neutral palette" loading="lazy">
-            <div class="bubble-copy">
-              <h3 class="bubble-title">Beautology after inner order</h3>
-              <p class="bubble-excerpt">Style as energy: why expression lands better when your inside is settled first.</p>
-              <div class="bubble-meta"><time datetime="2025-07-18">Jul 18, 2025</time> · Beauty</div>
-            </div>
-          </a>
-        </article>
-      </section>
-    </div>
-  </main>
-
-  <div id="footer-include"></div>
-</body>
-</html>
+    </main>
+    
+    <div id="footer-include"></div>
+    </body>
+    </html>
+    
