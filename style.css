@@ -1749,3 +1749,302 @@ body[data-bg="contact"] {
   .ebook-cover { max-width: 100%; order: -1; } /* show image first */
   .ebook-cover::before { padding-top: 140%; }
 }
+/* --- Background behind "Meet Our CEO" --- */
+.sora-bg {
+  position: relative;
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.45), 
+      rgba(0, 0, 0, 0.6)
+    ),
+    url("image/sora-bg-ceo.png") center center / cover no-repeat;
+  color: #fff;
+  isolation: isolate; /* keeps child blurs/shadows correct */
+}
+
+/* Add a subtle parallax illusion on desktop */
+@media (min-width: 861px) {
+  .sora-bg {
+    background-attachment: fixed;
+  }
+}
+
+/* Optional overlay shimmer for a premium look */
+.sora-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1), transparent 70%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+/* WAS IST INAYA */
+.inaya {
+  background: radial-gradient(circle at top, rgba(118,201,214,0.18), transparent 55%),
+              linear-gradient(180deg, rgba(12,20,25,0.96), rgba(7,11,16,0.98));
+}
+
+.inaya-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.inaya-copy h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, var(--gold), var(--duck));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.inaya-copy p {
+  opacity: 0.92;
+  margin-bottom: 10px;
+}
+
+.inaya-media {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  background: #0b1518;
+}
+
+.inaya-media::before {
+  content: "";
+  display: block;
+  padding-top: 120%;
+}
+
+.inaya-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .inaya-grid {
+    grid-template-columns: 1fr;
+  }
+  .inaya-media::before {
+    padding-top: 75%;
+  }
+}
+/* PAIN STORY */
+.story {
+  background: radial-gradient(circle at top left, rgba(212,175,55,0.15), transparent 60%);
+}
+
+.story h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.story p {
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .story h2 {
+    font-size: 1.6rem;
+  }
+}
+/* KEY RESULTS */
+.results {
+  background: radial-gradient(circle at top, rgba(118,201,214,0.18), transparent 55%);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.result-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 18px 18px 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.result-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.result-card p {
+  opacity: 0.92;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .result-card {
+    padding: 16px 14px 18px;
+  }
+}
+/* ANGEBOTE (MENTORING / RETREAT / PODCAST) */
+.offers {
+  background: linear-gradient(180deg, rgba(7,11,16,1), rgba(4,7,10,1));
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.offer-pill {
+  background: radial-gradient(circle at top, rgba(212,175,55,0.3), rgba(7,11,16,0.98));
+  border-radius: 28px;
+  padding: 22px 20px 24px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+  position: relative;
+  isolation: isolate;
+}
+
+.offer-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  border: 1px solid rgba(212,175,55,0.7);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.offer-pill h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.offer-pill p {
+  opacity: 0.92;
+  margin-bottom: 8px;
+}
+
+.offer-note {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Podcast video placeholder */
+.podcast-video {
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.video-placeholder {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0b1518;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.video-placeholder::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* 16:9 */
+}
+
+.video-placeholder span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .offer-pill {
+    padding: 18px 16px 20px;
+  }
+}
+/* 8-WOCHEN-STRUKTUR (TIMELINE) */
+.structure {
+  background: radial-gradient(circle at top right, rgba(118,201,214,0.2), transparent 60%);
+}
+
+.structure-intro {
+  text-align: center;
+  opacity: 0.9;
+  margin-bottom: 24px;
+}
+
+.timeline {
+  position: relative;
+  margin-top: 24px;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), var(--duck));
+  opacity: 0.7;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: #05080b;
+  box-shadow: 0 0 0 4px rgba(212,175,55,0.15);
+}
+
+.timeline-content {
+  background: rgba(10,18,24,0.95);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 10px 14px 12px;
+  margin-left: 22px;
+  box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+}
+
+.timeline-content h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.timeline-content p {
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 24px;
+  }
+}

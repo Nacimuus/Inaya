@@ -6,240 +6,516 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>INAYA – Self-Leadership & Emotional Regulation Coaching</title>
   <meta name="description" content="INAYA helps high-functioning women build inner order and emotional regulation so outer strength becomes grounded presence." />
+ <!-- Open Graph -->
+<meta property="og:site_name" content="INAYA Coaching" />
+<meta property="og:title" content="INAYA — Self-Leadership & Emotional Regulation Coaching" />
+<meta property="og:description" content="Guiding high functionning women toward calm, confidence, and clarity through emotional regulation & mindful self-leadership." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nacimuus.github.io/Inaya/" />
+<meta property="og:image" content="https://nacimuus.github.io/Inaya/hero-inaya.jpg" />
+<meta property="og:image:secure_url" content="https://nacimuus.github.io/Inaya/hero-inaya.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 
-  <!-- Open Graph -->
-  <meta property="og:site_name" content="INAYA Coaching" />
-  <meta property="og:title" content="INAYA — Self-Leadership & Emotional Regulation Coaching" />
-  <meta property="og:description" content="Guiding high functionning women toward calm, confidence, and clarity through emotional regulation & mindful self-leadership." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://nacimuus.github.io/Inaya/" />
-  <meta property="og:image" content="https://nacimuus.github.io/Inaya/hero-inaya.jpg" />
-  <meta property="og:image:secure_url" content="https://nacimuus.github.io/Inaya/hero-inaya.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="INAYA — Self-Leadership & Emotional Regulation Coaching" />
+<meta name="twitter:description" content="Guiding women toward calm, confidence, and clarity through emotional regulation & mindful self-leadership." />
+<meta name="twitter:image" content="https://nacimuus.github.io/Inaya/hero-inaya.jpg" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="INAYA — Self-Leadership & Emotional Regulation Coaching" />
-  <meta name="twitter:description" content="Guiding women toward calm, confidence, and clarity through emotional regulation & mindful self-leadership." />
-  <meta name="twitter:image" content="https://nacimuus.github.io/Inaya/hero-inaya.jpg" />
-
-  <link rel="icon" type="image/png" href="https://nacimuus.github.io/Inaya/favicon.png" />
-
+<link rel="icon" type="image/png" href="https://nacimuus.github.io/Inaya/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+<script defer src="java.js"></script>
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Styles & Scripts -->
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+  <!-- Scripts (handles header/footer injection + mobile nav) -->
   <script defer src="java.js"></script>
 </head>
-
 <body>
   <!-- Shared header gets injected here from /partials/header.html -->
-  <div id="header-include"></div>
+    <div id="header-include"></div>
+    <body data-bg="main">
 
-  <main>
-
-    <!-- ============== SPLIT HERO (mymiapage style) ============== -->
-    <section class="mymia-hero">
-      <div class="mymia-hero__card">
-        <h1><span>Business</span> Coaching</h1>
-        <p>Grow visibility with calm systems, then turn attention into revenue.</p>
-        <a class="mymia-btn" href="services.html#business">Learn more</a>
-      </div>
-      <div class="mymia-hero__card">
-        <h1><span>Personal</span> Mastery</h1>
-        <p>Regulate emotions, set boundaries, deepen presence—without losing your edge.</p>
-        <a class="mymia-btn" href="services.html#personal">Learn more</a>
-      </div>
-    </section>
-
-    <!-- ============== PROMO BANNER ============== -->
-    <section class="mymia-promo">
-      <p><strong>Flagship Workshop</strong> — Early-bird is open now.</p>
-      <a class="mymia-link" href="contact.html" aria-label="Go to event">Get tickets →</a>
-    </section>
-
-    <!-- ============== NEWSLETTER ============== -->
-    <section id="newsletter" class="mymia-newsletter">
-      <h2>Join the Newsletter</h2>
-      <p>Soft power, emotional regulation, and launch news—1× per week.</p>
-      <!-- Replace action with your Formspree / provider endpoint -->
-      <form action="https://formspree.io/f/yourid" method="POST">
-        <input type="email" name="email" placeholder="Enter your email" required />
-        <button class="mymia-btn" type="submit">Subscribe</button>
-      </form>
-      <div class="form-msg" aria-live="polite"></div>
-    </section>
-
-    <!-- ============== TRUSTED BY ============== -->
-    <section class="mymia-trusted" aria-labelledby="trusted-title">
-      <h3 id="trusted-title">Trusted by</h3>
-      <div class="mymia-logos">
-        <img src="assets/logo1.svg" alt="Logo 1">
-        <img src="assets/logo2.svg" alt="Logo 2">
-        <img src="assets/logo3.svg" alt="Logo 3">
-        <img src="assets/logo4.svg" alt="Logo 4">
-        <img src="assets/logo5.svg" alt="Logo 5">
-        <img src="assets/logo6.svg" alt="Logo 6">
-      </div>
-    </section>
-
-    <!-- ============== QUIZ TEASER ============== -->
-    <section id="quiz" class="mymia-quiz">
-      <h2>Which Archetype Are You?</h2>
-      <p>Discover your dominant energy in 5 minutes.</p>
-      <div class="mymia-grid">
-        <article class="mymia-card"><h4>Aphrodite</h4></article>
-        <article class="mymia-card"><h4>Hera</h4></article>
-        <article class="mymia-card"><h4>Artemis</h4></article>
-        <article class="mymia-card"><h4>Athena</h4></article>
-      </div>
-      <a class="mymia-btn" href="quiz.html">Start the test</a>
-    </section>
-
-    <!-- ============== MENTOR BIO ============== -->
-    <section id="mentor" class="mymia-mentor">
-      <div class="mymia-bio">
-        <h2>Your Mentor</h2>
-        <p>Short, authority-building bio. Evidence of results, media mentions, or client outcomes. What you teach, why it matters, and what happens in the first 14 days.</p>
-        <a class="mymia-btn" href="contact.html">Apply for 1:1</a>
-      </div>
-      <div class="mymia-portrait">
-        <img src="assets/mentor.jpg" alt="Mentor portrait">
-      </div>
-    </section>
-
-    <!-- ============== 4 PROGRAMS GRID ============== -->
-    <section id="courses" class="mymia-courses">
-      <h2>Programs</h2>
-      <div class="mymia-grid">
-        <a class="mymia-course" href="services.html#speak"><span>01</span><h3>Speak with Elegance</h3></a>
-        <a class="mymia-course" href="services.html#bootcamp"><span>02</span><h3>Elegance Bootcamp</h3></a>
-        <a class="mymia-course" href="services.html#manifest"><span>03</span><h3>Manifestation</h3></a>
-        <a class="mymia-course" href="services.html#energy"><span>04</span><h3>Feminine Energy</h3></a>
-      </div>
-    </section>
-
-    <!-- ============== FAQ ============== -->
-    <section class="mymia-faq">
-      <h2>FAQ</h2>
-      <details>
-        <summary>How do I qualify for mentoring?</summary>
-        <p>Willingness to learn and practice is enough to start.</p>
-      </details>
-      <details>
-        <summary>Can I learn at my own pace?</summary>
-        <p>Yes—programs are fully self-paced with optional live touchpoints.</p>
-      </details>
-      <details>
-        <summary>Do you offer 1:1 coaching?</summary>
-        <p>Yes—limited 1:1 spots. Apply above.</p>
-      </details>
-    </section>
-
-    <!-- ============== SOCIAL PROOF (kept from your page) ============== -->
-    <section class="block reveal" aria-labelledby="proof-title">
-      <div class="container narrow">
-        <h2 id="proof-title" class="display-sm center">What clients say</h2>
-        <div class="carousel" data-carousel id="proofCarousel" role="region" aria-roledescription="carousel" aria-label="Client testimonials">
-          <div class="carousel-track">
-            <figure class="slide is-active">
-              <blockquote>“Clearer, calmer, stronger. Small practices—big difference.”</blockquote>
-              <figcaption class="muted">— C., founder</figcaption>
-            </figure>
-            <figure class="slide">
-              <blockquote>“I finally know how to stay present when things go fast.”</blockquote>
-              <figcaption class="muted">— A., product lead</figcaption>
-            </figure>
-            <figure class="slide">
-              <blockquote>“Boundaries without drama. It changed my week.”</blockquote>
-              <figcaption class="muted">— L., consultant</figcaption>
-            </figure>
-            <figure class="slide">
-              <blockquote>“I show up softer—and I’m heard more.”</blockquote>
-              <figcaption class="muted">— M., creative director</figcaption>
-            </figure>
-          </div>
-          <button class="carousel-btn prev" aria-label="Previous testimonial">‹</button>
-          <button class="carousel-btn next" aria-label="Next testimonial">›</button>
-          <div class="carousel-dots" role="tablist" aria-label="Choose testimonial"></div>
+  
+    <main>
+  
+      <section class="hero-luxury" aria-label="INAYA main hero">
+        <img src="image/hero-inaya .png" alt="INAYA coaching and academy" class="hero-image">
+      
+        <!-- Top-left content -->
+        <div class="hero-content hero-top-left">
+          <h1>1:1 Coaching</h1>
+          <p>Personal transformation through calm structure, emotional regulation, and self-leadership.</p>
+          <a href="contact.html" class="btn btn-primary">Book a Discovery Call</a>
         </div>
-      </div>
-    </section>
+      
+        <!-- Bottom-right content -->
+        <div class="hero-content hero-bottom-right">
+          <h2>INAYA Academy</h2>
+          <p>Collective growth & experiential learning — structure without overwhelm.</p>
+          <a href="services.html" class="btn">Explore the Academy</a>
+        </div>
+      </section>
+      
 
-    <!-- ============== END CTA (kept) ============== -->
-    <section class="block">
-      <div class="container narrow center">
-        <h2 class="display-sm">Ready when you are.</h2>
-        <p class="lede">Start gently—one small step is enough.</p>
-        <div class="spacer-s"></div>
-        <a class="btn btn-primary" href="contact.html">Book a discovery call</a>
-      </div>
-    </section>
+<!-- Upcoming Retreat Banner -->
+<section class="retreat-banner" aria-label="Upcoming INAYA Retreat">
+  <div class="banner-logo left">
+    <img src="image/logo.jpg" alt="INAYA Logo">
+  </div>
 
+  <div class="banner-inner">
+    <div class="banner-left">
+      <h3>Next INAYA Retreat — Zurich</h3>
+      <p>March 21–25, 2026 · Theme: “Reset, Rise & Reconnect”</p>
+    </div>
+    <div class="banner-right">
+      <a href="services.html#retreat" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+
+  <div class="banner-logo right">
+    <img src="image/logo.jpg" alt="INAYA Logo">
+  </div>
+</section>
+
+<!-- CEO Presentation -->
+<section id="ceo-video" class="section ceo-video">
+  <img src="image/ceo-hero.png" alt="Luxury textured background" class="ceo-bg" />
+
+  <div class="container">
+  <div class="container">
+    <div class="ceo-video__header">
+      <h2>Message from Our CEO</h2>
+      <p>Discover the vision behind INAYA and how we guide ambitious women toward calm, clarity, and grounded leadership.</p>
+    </div>
+
+    <!-- OPTION A: Local MP4 (recommended if you host the file) -->
+    <div class="ceo-video__frame" data-player="mp4">
+      <button class="ceo-video__play" aria-label="Play video"></button>
+      <video
+        class="ceo-video__media"
+        preload="none"
+        playsinline
+        controls
+        poster="ceo-poster.jpg"  <!-- replace with your poster image -->
+      >
+        <source src="ceo-presentation.mp4" type="video/mp4" />  <!-- replace with your video file -->
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- OPTION B: YouTube (privacy-enhanced). Comment Option A and uncomment this block if using YouTube -->
+    <!--
+    <div class="ceo-video__frame" data-player="youtube" data-src="https://www.youtube-nocookie.com/embed/VIDEO_ID?autoplay=1&rel=0&modestbranding=1">
+      <button class="ceo-video__play" aria-label="Play video"></button>
+      <div class="ceo-video__thumb">
+        <img src="ceo-poster.jpg" alt="CEO presentation thumbnail" loading="lazy" />
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+
+ <!-- Trusted By Banner -->
+<section id="trusted-by" class="trusted-by">
+  <div class="trusted-inner">
+    <button class="trusted-arrow left" aria-label="Previous"></button>
+
+    <!-- Viewport: full-width, scrollable -->
+    <div class="trusted-viewport" aria-label="Trusted brands carousel">
+      <!-- Track: wide flex row -->
+      <div class="trusted-track">
+        <!-- Tip: prefer SVGs or transparent PNGs around same height -->
+        <img src="image/logo1.png" alt="Company 1" />
+        <img src="image/logo2.png" alt="Company 2" />
+        <img src="image/logo3.png" alt="Company 3" />
+        <img src="image/logo4.png" alt="Company 4" />
+        <img src="image/logo5.png" alt="Company 5" />
+        <!-- add/remove as needed -->
+      </div>
+    </div>
+
+    <button class="trusted-arrow right" aria-label="Next"></button>
+  </div>
+
+  <p class="trusted-title">Trusted by visionary organizations worldwide</p>
+</section>
+
+<!-- CEO Profile -->
+
+<section id="ceo-profile" class="ceo-profile">
+  <div class="ceo-heading">
+    <h2>Meet Our CEO</h2>
+    <p>Discover the woman behind INAYA’s vision — blending strategy, empathy, and inner mastery.</p>
+
+    <div class="ceo-orbit">
+      <!-- Central portrait -->
+      <img class="ceo-avatar" src="image/joke1.jpeg" alt="Laura M., Founder & CEO of INAYA" />
+
+      <!-- Curved arrow lines (drawn by JS) -->
+      <svg class="ceo-links" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <!-- gold → duck-blue gradient -->
+          <linearGradient id="lux-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#d4af37" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#76c9d6" stop-opacity="0.9"/>
+          </linearGradient>
+          <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="url(#lux-stroke)" opacity="0.85"/>
+          </marker>
+        </defs>
+        <path id="link-c1" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
+        <path id="link-c2" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
+        <path id="link-c3" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
+        <path id="link-c4" class="ceo-link" d="" marker-end="url(#arrowhead)"></path>
+      </svg>
+
+      <!-- Cards -->
+      <article id="c1" class="ceo-card" tabindex="0" data-aos="fade-up" data-aos-delay="0"> 
+        <span class="ceo-card__icon" aria-hidden="true">
+          <!-- Compass / background -->
+          <svg viewBox="0 0 24 24" class="i"><path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2Zm3.9 3.9-2.2 6.6-6.6 2.2 2.2-6.6 6.6-2.2Zm-3.9 5.6a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+        </span>
+        <h3>Background</h3>
+        <p>the best woman in the world e.</p>
+      </article>
+      
+      <article id="c2" class="ceo-card" tabindex="0" data-aos="fade-up" data-aos-delay="80">
+        <span class="ceo-card__icon" aria-hidden="true">
+          <!-- Feather / philosophy -->
+          <svg viewBox="0 0 24 24" class="i"><path d="M20 4c-5 0-9 4-9 9v1H8l-4 4 1 1 4-4v3h1c5 0 9-4 9-9V4Z"/></svg>
+        </span>
+        <h3>Philosophy</h3>
+        <p>Calm first, clarity next, then bold action. Inner order creates outer excellence.</p>
+      </article>
+      
+      <article id="c3" class="ceo-card" tabindex="0" data-aos="fade-up" data-aos-delay="160">
+        <span class="ceo-card__icon" aria-hidden="true">
+          <!-- Target / expertise -->
+          <svg viewBox="0 0 24 24" class="i"><path d="M12 4a8 8 0 1 0 8 8h-2a6 6 0 1 1-6-6V4Zm0 4a4 4 0 1 0 4 4h-2a2 2 0 1 1-2-2V8Z"/></svg>
+        </span>
+        <h3>Expertise</h3>
+        <p>Emotional regulation, self-leadership, executive presence, and values-aligned performance.</p>
+      </article>
+      
+      <article id="c4" class="ceo-card" tabindex="0" data-aos="fade-up" data-aos-delay="240"> 
+        <span class="ceo-card__icon" aria-hidden="true">
+          <!-- Shield / credentials -->
+          <svg viewBox="0 0 24 24" class="i"><path d="M12 2 4 5v6c0 5 3.3 8.7 8 11 4.7-2.3 8-6 8-11V5l-8-3Zm0 4.2 6 2.2v2.6c0 3.8-2.2 6.7-6 8.8-3.8-2.1-6-5-6-8.8V8.4l6-2.2Z"/></svg>
+        </span>
+        <h3>Credentials</h3>
+        <p>ICF-accredited training, NLP practicionner and other degrees</p>
+      </article>
+      
+</section>
+
+      
+  
+    <!-- INAYA Academy — Four Pillars (image tiles) -->
+<section id="academy" class="academy">
+  <div class="academy-head">
+    <h2>The INAYA Academy</h2>
+    <p>Four pillars to strengthen inner order and elevate your life. Tap a pillar to explore the class.</p>
+  </div>
+
+  <div class="pillars-viewport" aria-label="INAYA Academy pillars (horizontal)">
+    <div class="pillars-track">
+      <!-- Mindset -->
+      <a class="pillar-card" href="pillar-mindset.html" aria-label="Mindset — open class details">
+        <figure class="tile">
+          <picture>
+            <!-- optional high-res desktop -->
+            <source media="(min-width: 861px)" srcset="image/pillars/mindset@2x.jpg">
+            <img src="image/image04.jpg" alt="Mindset — calm focus and inner clarity" loading="lazy">
+          </picture>
+          <figcaption class="tile-caption">
+            <span class="title">Mindset</span>
+          </figcaption>
+        </figure>
+      </a>
+
+      <!-- Relationship -->
+      <a class="pillar-card" href="pillar-relationship.html" aria-label="Relationship — open class details">
+        <figure class="tile">
+          <picture>
+            <source media="(min-width: 861px)" srcset="image/pillars/relationship@2x.jpg">
+            <img src="image/joke.jpeg" alt="Relationship — connection, empathy, communication" loading="lazy">
+          </picture>
+          <figcaption class="tile-caption">
+            <span class="title">Relationship</span>
+          </figcaption>
+        </figure>
+      </a>
+
+      <!-- Career -->
+      <a class="pillar-card" href="pillar-career.html" aria-label="Career — open class details">
+        <figure class="tile">
+          <picture>
+            <source media="(min-width: 861px)" srcset="image/pillars/career@2x.jpg">
+            <img src="image/image06.jpg" alt="Career — leadership, presence, strategy" loading="lazy">
+          </picture>
+          <figcaption class="tile-caption">
+            <span class="title">Career</span>
+          </figcaption>
+        </figure>
+      </a>
+
+      <!-- Wellbeing -->
+      <a class="pillar-card" href="pillar-wellbeing.html" aria-label="Wellbeing — open class details">
+        <figure class="tile">
+          <picture>
+            <source media="(min-width: 861px)" srcset="image/pillars/wellbeing@2x.jpg">
+            <img src="image/joke1.jpeg" alt="Wellbeing — balance, rituals, nervous system" loading="lazy">
+          </picture>
+          <figcaption class="tile-caption">
+            <span class="title">Wellbeing</span>
+          </figcaption>
+        </figure>
+      </a>
+    </div>
+  </div>
+
+  <div class="academy-cta">
+    <a href="services.html#academy" class="btn btn-gradient">Explore all services</a>
+  </div>
+</section>
+
+
+<!-- Free eBook Section -->
+<section id="ebook-offer" class="ebook-offer">
+  <div class="container">
+    <div class="ebook-grid">
+
+      <!-- Left: Text + Form -->
+      <div class="ebook-content" data-aos="fade-right">
+        <h2>Download Our Free eBook</h2>
+        <p>
+          Discover INAYA’s framework for calm, clarity, and confident action — 
+          a guide to align your mindset, relationships, career, and wellbeing.
+        </p>
+        <p>
+          Get your free copy by entering your details below.
+        </p>
+
+        <form class="ebook-form" id="ebookForm">
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Your Email Address" required />
+          </div>
+          <button type="submit" class="btn btn-gradient">Get My eBook</button>
+          <p class="form-note">We respect your privacy. No spam — ever.</p>
+        </form>
+      </div>
+
+      <!-- Right: eBook Image -->
+      <figure class="ebook-cover" data-aos="fade-left">
+        <img src="image/ebook.png" alt="INAYA eBook Cover" loading="lazy" />
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="faq-head">
+    <h2>Frequently Asked Questions</h2>
+    <p>Quick answers about the INAYA Academy experience.</p>
+  </div>
+
+  <div class="faq-list">
+    <!-- Item 1 -->
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" aria-controls="faq1">
+        Who is the Academy for?
+      </button>
+      <div id="faq1" class="faq-a" role="region" aria-hidden="true">
+        <p>The Academy is designed for high-performing women seeking calm, clarity, and aligned growth across mindset, relationships, career, and wellbeing.</p>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" aria-controls="faq2">
+        How are the classes delivered?
+      </button>
+      <div id="faq2" class="faq-a" role="region" aria-hidden="true">
+        <p>Each pillar offers short modules (video + exercises), live group sessions, and optional 1:1 coaching. You can start with any pillar and progress at your rhythm.</p>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" aria-controls="faq3">
+        Do I need to attend a retreat first?
+      </button>
+      <div id="faq3" class="faq-a" role="region" aria-hidden="true">
+        <p>No—retreats are a plus, not a prerequisite. You can join the Academy online anytime and add retreats when you’re ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Coaching Intro -->
+<section id="coaching-intro" class="coaching-intro">
+  <div class="container">
+    <div class="coaching-grid">
+      <!-- Left: Text -->
+      <div class="coaching-copy" data-aos="fade-right">
+        <h2>1:1 & Group Coaching</h2>
+        <p>
+          INAYA coaching blends calm nervous-system work with sharp strategy so you move from
+          overwhelm to grounded action. We focus on what truly shifts results: clarity, emotional
+          regulation, and aligned execution.
+        </p>
+        <ul class="coaching-bullets">
+          <li>Personalized roadmap & rituals</li>
+          <li>Mindset, relationships, career, wellbeing</li>
+          <li>Action sessions + reflection & feedback</li>
+        </ul>
+
+        <a href="services.html#coaching" class="btn btn-gradient">Discover Coaching</a>
+      </div>
+
+      <!-- Right: Image -->
+      <figure class="coaching-media" data-aos="fade-left">
+        <img src="image/image04.jpg" alt="INAYA coaching — calm focus and guided action" loading="lazy" />
+      </figure>
+    </div>
+  </div>
+</section>
+
+     
+  
+       <!-- SOCIAL PROOF -->
+      <section class="block reveal" aria-labelledby="proof-title">
+        <div class="container narrow">
+          <h2 id="proof-title" class="display-sm center">What clients say</h2>
+      
+          <div class="carousel" data-carousel id="proofCarousel" role="region" aria-roledescription="carousel" aria-label="Client testimonials">
+            <div class="carousel-track">
+              <!-- Slide 1 -->
+              <figure class="slide is-active">
+                <blockquote>“Clearer, calmer, stronger. Small practices—big difference.”</blockquote>
+                <figcaption class="muted">— C., founder</figcaption>
+              </figure>
+      
+              <!-- Slide 2 -->
+              <figure class="slide">
+                <blockquote>“I finally know how to stay present when things go fast.”</blockquote>
+                <figcaption class="muted">— A., product lead</figcaption>
+              </figure>
+      
+              <!-- Slide 3 -->
+              <figure class="slide">
+                <blockquote>“Boundaries without drama. It changed my week.”</blockquote>
+                <figcaption class="muted">— L., consultant</figcaption>
+              </figure>
+      
+              <!-- Slide 4 -->
+              <figure class="slide">
+                <blockquote>“I show up softer—and I’m heard more.”</blockquote>
+                <figcaption class="muted">— M., creative director</figcaption>
+              </figure>
+            </div>
+      
+            <button class="carousel-btn prev" aria-label="Previous testimonial">‹</button>
+            <button class="carousel-btn next" aria-label="Next testimonial">›</button>
+      
+            <div class="carousel-dots" role="tablist" aria-label="Choose testimonial"></div>
+          </div>
+        </div>
+      </section>
+      
+
+      <!-- END CTA -->
+      <section class="block">
+        <div class="container narrow center">
+          <h2 class="display-sm">Ready when you are.</h2>
+          <p class="lede">Start gently—one small step is enough.</p>
+          <div class="spacer-s"></div>
+          <a class="btn btn-primary" href="contact.html">Book a discovery call</a>
+        </div>
+      </section>
   </main>
 
   <!-- Shared footer gets injected here from /partials/footer.html -->
   <div id="footer-include"></div>
 
   <!-- Gift popup (first visit) -->
-  <div id="giftPopup" class="gift-popover" aria-hidden="true" role="dialog" aria-labelledby="giftTitle" aria-modal="true">
-    <div class="gift-backdrop" data-close></div>
-    <div class="gift-card" role="document">
-      <button class="gift-close" aria-label="Close" data-close>×</button>
-      <div class="gift-emoji" aria-hidden="true">🎁</div>
-      <h3 id="giftTitle">A little gift, Laura</h3>
-      <p class="muted" style="margin:.25rem 0 1rem">
-        Because what matters to you, matters to me. I’ll always have your back and help you achieve big.
-      </p>
-      <p class="muted" style="font-size:.95rem; margin:0 0 1rem">
-        May this space support your calm, your power, and your next chapter. — N.
-      </p>
-      <div style="display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap">
-        <a class="btn btn-primary" href="tips.html">Read a tip</a>
-        <button class="btn" data-close>Continue</button>
-      </div>
+<div id="giftPopup" class="gift-popover" aria-hidden="true" role="dialog" aria-labelledby="giftTitle" aria-modal="true">
+  <div class="gift-backdrop" data-close></div>
+
+  <div class="gift-card" role="document">
+    <button class="gift-close" aria-label="Close" data-close>×</button>
+
+    <div class="gift-emoji" aria-hidden="true">🎁</div>
+    <h3 id="giftTitle">A little gift, Laura</h3>
+    <p class="muted" style="margin:.25rem 0 1rem">
+      Because what matters to you, matters to me. I’ll always have your back and help you achieve big.
+    </p>
+
+    <!-- Optional subline (edit freely) -->
+    <p class="muted" style="font-size:.95rem; margin:0 0 1rem">
+      May this space support your calm, your power, and your next chapter. — N.
+    </p>
+
+    <div style="display:flex; gap:.5rem; justify-content:center; flex-wrap:wrap">
+      <a class="btn btn-primary" href="tips.html">Read a tip</a>
+      <button class="btn" data-close>Continue</button>
     </div>
   </div>
-
-  <!-- Inaya Cookie Consent Banner -->
-  <div id="cookie-banner" class="cookie-banner">
-    <div class="cookie-content">
-      <h4>🍪 Your Privacy Matters</h4>
-      <p>
-        Inaya uses cookies to make your visit smoother and more personal.
-        They help us understand how you use the site and improve your experience.
-        You can choose to accept or refuse them — it’s entirely up to you 💛
-      </p>
-      <div class="cookie-actions">
-        <button id="accept-cookies">Accept</button>
-        <button id="refuse-cookies">Refuse</button>
-      </div>
+</div>
+<!-- 🌸 Inaya Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-content">
+    <h4>🍪 Your Privacy Matters</h4>
+    <p>
+      Inaya uses cookies to make your visit smoother and more personal.
+      They help us understand how you use the site and improve your experience.
+      You can choose to accept or refuse them — it’s entirely up to you 💛
+    </p>
+    <div class="cookie-actions">
+      <button id="accept-cookies">Accept</button>
+      <button id="refuse-cookies">Refuse</button>
     </div>
   </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const acceptBtn = document.getElementById("accept-cookies");
+    const refuseBtn = document.getElementById("refuse-cookies");
 
-  <script>
-    // Cookie banner
-    document.addEventListener("DOMContentLoaded", function () {
-      const banner = document.getElementById("cookie-banner");
-      const acceptBtn = document.getElementById("accept-cookies");
-      const refuseBtn = document.getElementById("refuse-cookies");
-      if (!localStorage.getItem("cookieConsent")) {
-        setTimeout(() => banner.classList.add("show"), 1200);
-      }
-      acceptBtn.addEventListener("click", () => {
-        localStorage.setItem("cookieConsent", "accepted");
-        banner.classList.remove("show");
-      });
-      refuseBtn.addEventListener("click", () => {
-        localStorage.setItem("cookieConsent", "refused");
-        banner.classList.remove("show");
-      });
+    // Only show if no choice made
+    if (!localStorage.getItem("cookieConsent")) {
+      setTimeout(() => banner.classList.add("show"), 1200); // smooth delayed entry
+    }
+
+    acceptBtn.addEventListener("click", () => {
+      localStorage.setItem("cookieConsent", "accepted");
+      banner.classList.remove("show");
     });
-  </script>
+
+    refuseBtn.addEventListener("click", () => {
+      localStorage.setItem("cookieConsent", "refused");
+      banner.classList.remove("show");
+    });
+  });
+</script>
+
+
 </body>
 </html>
