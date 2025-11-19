@@ -772,7 +772,7 @@
 <!-- This widget shows a small helper bot on the bottom-right.
      All user-visible text is in German. You can paste it anywhere before </body>. -->
 
-     <!-- INAYA Mini-Bot – upgraded chat version -->
+     <!-- INAYA Mini-Bot – chat + typed questions -->
 <div class="inaya-bot">
   <!-- Round toggle button -->
   <button class="inaya-bot-toggle" aria-label="INAYA Chat öffnen">?</button>
@@ -789,7 +789,7 @@
       <div class="inaya-bot-chat" aria-live="polite">
         <div class="chat-bubble chat-bubble--bot">
           Hi, ich bin dein INAYA Assist. 👋<br>
-          Wähle eine Frage oder schreibe uns für ein Erstgespräch.
+          Wähle eine Frage oder schreibe mir kurz, was dich beschäftigt.
         </div>
         <div class="typing-indicator is-hidden">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
@@ -812,8 +812,19 @@
         </button>
       </div>
 
+      <!-- Typed question input -->
+      <form class="inaya-bot-input" autocomplete="off">
+        <input
+          type="text"
+          class="bot-input"
+          name="botMessage"
+          placeholder="Kurze Frage an INAYA…"
+        />
+        <button type="submit" class="bot-send" aria-label="Nachricht senden">➤</button>
+      </form>
+
       <p class="inaya-bot-note">
-        Für individuelle Fragen kannst du jederzeit das Kontaktformular nutzen.
+        Für tiefergehende Themen ist ein Gespräch immer besser als Chat.
       </p>
       <a href="#kontakt" class="btn btn-gradient inaya-bot-cta">Zum Kontakt</a>
     </div>

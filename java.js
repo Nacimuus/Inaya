@@ -644,17 +644,19 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 // --- INAYA Mini-Bot (safe, no crash) ---
-// --- INAYA Mini-Bot (upgraded chat) ---
+// --- INAYA Mini-Bot (chat + typed questions, no external API) ---
 (function(){
   var root = document.querySelector('.inaya-bot');
   if (!root) return; // no bot on this page
 
-  var toggle      = root.querySelector('.inaya-bot-toggle');
-  var windowEl    = root.querySelector('.inaya-bot-window');
-  var closeBtn    = root.querySelector('.inaya-bot-close');
-  var chat        = root.querySelector('.inaya-bot-chat');
-  var typing      = root.querySelector('.typing-indicator');
+  var toggle       = root.querySelector('.inaya-bot-toggle');
+  var windowEl     = root.querySelector('.inaya-bot-window');
+  var closeBtn     = root.querySelector('.inaya-bot-close');
+  var chat         = root.querySelector('.inaya-bot-chat');
+  var typing       = root.querySelector('.typing-indicator');
   var questionBtns = root.querySelectorAll('.bot-q');
+  var form         = root.querySelector('.inaya-bot-input');
+  var input        = root.querySelector('.bot-input');
 
   if (!toggle || !windowEl || !chat) return;
 
@@ -673,6 +675,8 @@ document.addEventListener('DOMContentLoaded', function(){
       closeBot();
     } else {
       openBot();
+      // focus input on open if available
+      input && input.focus();
     }
   });
 
@@ -697,7 +701,7 @@ document.addEventListener('DOMContentLoaded', function(){
     chat.scrollTop = chat.scrollHeight;
   }
 
-  // Show/hide typing indicator
+  // Typing indicator
   function showTyping(show){
     if (!typing) return;
     typing.classList.toggle('is-hidden', !show);
@@ -706,23 +710,77 @@ document.addEventListener('DOMContentLoaded', function(){
     }
   }
 
+  // Simple rule-based "AI" in German
+  function chooseAnswer(message){
+    var t = (message || '').toLowerCase();
+
+    // trim diacritics/simple variants
+    t = t.replace('ä','a').replace('ö','o').replace('ü','u').replace('ß','ss');
+
+    // Erstgespräch / Kennenlernen
+    if (t.includes('erstgespraech') || t.includes('erstgespräch') || t.includes('kennenlernen') || t.includes('call')) {
+      return 'Im kostenlosen Erstgespräch schauen wir gemeinsam, wo du gerade stehst, welche Themen dich am meisten drücken und ob das INAYA System zu dir passt. Du bekommst eine ehrliche Einschätzung und eine klare Empfehlung für die nächsten Schritte.';
+    }
+
+    // Kosten / Preis / Invest
+    if (t.includes('preis') || t.includes('kosten') || t.includes('invest') || t.includes('gebuehr') || t.includes('gebühr') || t.includes('honorar')) {
+      return 'Die Investition hängt davon ab, ob du nur mit dem 8-Wochen-Programm startest oder zusätzlich 1:1-Begleitung möchtest. Im Erstgespräch bekommst du eine transparente Übersicht über alle Optionen und kannst in Ruhe entscheiden.';
+    }
+
+    // Dauer / 8 Wochen / Struktur
+    if (t.includes('dauer') || t.includes('wie lange') || t.includes('wochen') || t.includes('struktur') || t.includes('programm')) {
+      return 'Das Kernprogramm von INAYA ist auf etwa 8 Wochen ausgelegt. Du arbeitest in klaren Schritten an innerer Ordnung, emotionaler Regulation und Selbstführung – mit konkreten Aufgaben und Reflexionen, die zu deinem Alltag als ENTJ-Frau passen.';
+    }
+
+    // Für wen geeignet
+    if (t.includes('fuehrt') || t.includes('fuehrung') || t.includes('fuhrung') || t.includes('entj') || t.includes('leistung') || t.includes('high performer')) {
+      return 'INAYA richtet sich an Frauen mit hoher Verantwortung und starker Leistungsidentität – besonders ENTJ-Kommandeurinnen –, die im Außen funktionieren, aber innerlich wenig Platz für ihre eigenen Bedürfnisse spüren.';
+    }
+
+    // Mentoring / Retreat
+    if (t.includes('mentoring') || t.includes('retreat') || t.includes('reise') || t.includes('weekend')) {
+      return 'Neben dem Programm gibt es Mentoring und Retreat-Angebote. Diese Formate vertiefen die Arbeit am Nervensystem und an deinen Beziehungs- und Führungsthemen. Schreib uns kurz im Kontaktformular, was dich interessiert, dann bekommst du alle Details.';
+    }
+
+    // Default / individuelle Frage
+    return 'Das klingt nach einer individuellen Frage. 💬 Am besten passt hier ein kurzes Gespräch – so kann Laura dich und deine Situation besser einordnen. Wenn du möchtest, kannst du direkt über das Kontaktformular ein Erstgespräch anfragen.';
+  }
+
   // When user clicks a predefined question
   if (questionBtns.length) {
     questionBtns.forEach(function(btn){
       btn.addEventListener('click', function(){
         var answer = btn.getAttribute('data-answer') || '';
         var qText  = btn.textContent.trim();
+        if (!qText) return;
 
-        // 1) show user bubble
         addBubble('user', qText);
-
-        // 2) show typing indicator, then bot answer
         showTyping(true);
+
         setTimeout(function(){
           showTyping(false);
           addBubble('bot', answer);
         }, 450);
       });
+    });
+  }
+
+  // Handle typed messages
+  if (form && input) {
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var text = input.value.trim();
+      if (!text) return;
+
+      addBubble('user', text);
+      input.value = '';
+
+      var reply = chooseAnswer(text);
+      showTyping(true);
+      setTimeout(function(){
+        showTyping(false);
+        addBubble('bot', reply);
+      }, 500);
     });
   }
 })();
