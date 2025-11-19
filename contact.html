@@ -14,125 +14,146 @@
 <body>
   <div id="header-include"></div>
   <body data-bg="contact">
-
-
-  <main class="section">
-    <div class="container">
-      <h1>Contact</h1>
-      <p class="muted max-w">Email us directly, request a callback, or propose a time for your first appointment. Keep it simple.</p>
-      <div class="spacer-m"></div>
-
-      <!-- Two-column on desktop, single on mobile -->
-      <div class="grid" style="grid-template-columns:1.1fr .9fr; gap:1.25rem">
-        <!-- Form -->
-        <section class="card">
-          <h3 id="form">Send a message</h3>
-
-          <!-- Option A (recommended): Form backend like Formspree. Replace the action URL. -->
-          <!-- Option B: Use mailto: hello@inaya.co (very basic, less reliable) -->
-          <form action="https://formspree.io/f/your-id" method="POST">
-            <label>
-              <span>Name</span>
-              <input type="text" name="name" required />
-            </label>
-
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" required />
-            </label>
-
-            <label>
-              <span>Phone (optional)</span>
-              <input type="tel" name="phone" placeholder="+33 6 00 00 00 00" />
-            </label>
-
-            <label>
-              <span>Message</span>
-              <textarea name="message" rows="5" placeholder="Tell us your goal in one sentence" required></textarea>
-            </label>
-
-            <!-- Callback request -->
-            <fieldset style="border:0; padding:0; margin: .5rem 0 0">
-              <legend class="muted" style="font-weight:600; margin-bottom:.35rem">Callback (optional)</legend>
-              <label style="display:flex; align-items:center; gap:.5rem">
-                <input type="checkbox" id="want-callback" name="want_callback" value="yes" />
-                <span>Request a callback</span>
+    <div id="header-include"></div>
+  
+    <main class="section">
+      <div class="container">
+        <h1 data-aos="fade-right">Kontakt</h1>
+        <p class="muted max-w" data-aos="fade-right" data-aos-delay="120">
+          Schreibe uns direkt, fordere einen Rückruf an oder schlage einen Termin für dein Erstgespräch vor.
+          Klar. Einfach. Persönlich.
+        </p>
+  
+        <div class="spacer-m"></div>
+  
+        <!-- Two-column on desktop, single on mobile -->
+        <div class="grid contact-layout">
+          <!-- Form -->
+          <section class="card" data-aos="fade-up">
+            <h3 id="form">Nachricht senden</h3>
+  
+            <!-- Replace Formspree URL with your real ID + redirect if you like -->
+            <!-- Beispiel: action="https://formspree.io/f/DEINE-ID" -->
+            <form action="https://formspree.io/f/your-id" method="POST">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" required />
               </label>
-              <div id="callback-fields" style="display:none; margin-top:.5rem">
-                <label>
-                  <span>Best day</span>
-                  <input type="date" name="callback_date" />
-                </label>
-                <label>
-                  <span>Time window</span>
-                  <select name="callback_window">
-                    <option value="">Choose…</option>
-                    <option>Morning (09:00–12:00)</option>
-                    <option>Afternoon (13:00–17:00)</option>
-                    <option>Evening (18:00–20:00)</option>
-                  </select>
-                </label>
-              </div>
-            </fieldset>
-
-            <!-- Appointment booking -->
-            <fieldset style="border:0; padding:0; margin:.75rem 0 0">
-              <legend class="muted" style="font-weight:600; margin-bottom:.35rem">Propose an appointment (optional)</legend>
-              <label style="display:flex; align-items:center; gap:.5rem">
-                <input type="checkbox" id="book-appointment" name="book_appointment" value="yes" />
-                <span>Propose a first appointment</span>
+  
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" required />
               </label>
-              <div id="appointment-fields" style="display:none; margin-top:.5rem">
-                <label>
-                  <span>Date</span>
-                  <input type="date" name="appt_date" />
+  
+              <label>
+                <span>Telefon (optional)</span>
+                <input type="tel" name="phone" placeholder="+49 170 0000000" />
+              </label>
+  
+              <label>
+                <span>Nachricht</span>
+                <textarea name="message" rows="5" placeholder="Formuliere dein Anliegen in einem Satz" required></textarea>
+              </label>
+  
+              <!-- Callback request -->
+              <fieldset class="callback-group">
+                <legend class="muted">Rückruf (optional)</legend>
+  
+                <label class="inline-check">
+                  <input type="checkbox" id="want-callback" name="want_callback" value="yes" />
+                  <span>Rückruf anfragen</span>
                 </label>
-                <label>
-                  <span>Time</span>
-                  <input type="time" name="appt_time" />
+  
+                <div id="callback-fields" class="callback-extra">
+                  <label>
+                    <span>Bevorzugter Tag</span>
+                    <input type="date" name="callback_date" />
+                  </label>
+                  <label>
+                    <span>Zeitfenster</span>
+                    <select name="callback_window">
+                      <option value="">Bitte wählen…</option>
+                      <option>Vormittag (09:00–12:00)</option>
+                      <option>Nachmittag (13:00–17:00)</option>
+                      <option>Abend (18:00–20:00)</option>
+                    </select>
+                  </label>
+                </div>
+              </fieldset>
+  
+              <!-- Appointment booking -->
+              <fieldset class="callback-group">
+                <legend class="muted">Termin vorschlagen (optional)</legend>
+  
+                <label class="inline-check">
+                  <input type="checkbox" id="book-appointment" name="book_appointment" value="yes" />
+                  <span>Erstgespräch vorschlagen</span>
                 </label>
-                <label>
-                  <span>Mode</span>
-                  <select name="appt_mode">
-                    <option value="">Choose…</option>
-                    <option>Video (Google Meet)</option>
-                    <option>Video (Zoom)</option>
-                    <option>Phone</option>
-                    <option>In person (if available)</option>
-                  </select>
-                </label>
-              </div>
-            </fieldset>
-
-            <!-- GDPR consent -->
-            <label style="display:flex; align-items:flex-start; gap:.5rem; margin-top:.75rem">
-              <input type="checkbox" name="consent" required />
-              <span class="muted" style="font-size:.95rem">I agree to be contacted regarding my request. My data will be handled per the Privacy & GDPR policy.</span>
-            </label>
-
+  
+                <div id="appointment-fields" class="appointment-extra">
+                  <label>
+                    <span>Datum</span>
+                    <input type="date" name="appt_date" />
+                  </label>
+                  <label>
+                    <span>Uhrzeit</span>
+                    <input type="time" name="appt_time" />
+                  </label>
+                  <label>
+                    <span>Format</span>
+                    <select name="appt_mode">
+                      <option value="">Bitte wählen…</option>
+                      <option>Video (Google Meet)</option>
+                      <option>Video (Zoom)</option>
+                      <option>Telefon</option>
+                      <option>Vor Ort (falls möglich)</option>
+                    </select>
+                  </label>
+                </div>
+              </fieldset>
+  
+              <!-- GDPR consent -->
+              <label class="consent-row">
+                <input type="checkbox" name="consent" required />
+                <span class="muted consent-text">
+                  Ich stimme zu, bezüglich meiner Anfrage kontaktiert zu werden.
+                  Meine Daten werden gemäß Datenschutz & DSGVO verarbeitet.
+                </span>
+              </label>
+  
+              <div class="spacer-s"></div>
+              <button class="btn btn-primary" type="submit">Senden</button>
+            </form>
+          </section>
+  
+          <!-- Direct contact + micro-FAQ -->
+          <aside class="card" data-aos="fade-up" data-aos-delay="150">
+            <h3>Direkter Kontakt</h3>
+            <p class="muted">Möchtest du das Formular überspringen?</p>
+            <div class="spacer-xs"></div>
+  
+            <p>Email: <a href="mailto:hello@inaya.co">hello@inaya.co</a></p>
+            <p>Telefon: <a href="tel:+33600000000">+33 6 00 00 00 00</a></p>
+  
             <div class="spacer-s"></div>
-            <button class="btn btn-primary" type="submit">Send</button>
-          </form>
-        </section>
-
-        <!-- Direct contact + micro-FAQ -->
-        <aside class="card">
-          <h3>Direct contact</h3>
-          <p class="muted">Prefer to skip the form?</p>
-          <div class="spacer-xs"></div>
-          <p>Email: <a href="mailto:hello@inaya.co">hello@inaya.co</a></p>
-          <p>Phone: <a href="tel:+33600000000">+33 6 00 00 00 00</a></p>
-          <div class="spacer-s"></div>
-          <h3>What happens next?</h3>
-          <p class="muted">We reply within 24–48h (weekday). If you proposed a time, we’ll confirm or suggest another slot.</p>
-          <div class="spacer-s"></div>
-          <a class="btn" href="tips.html">See this month’s tip</a>
-        </aside>
+  
+            <h3>Wie geht es weiter?</h3>
+            <p class="muted">
+              Wir antworten in der Regel innerhalb von 24–48 Stunden (werktags).
+              Wenn du einen Terminvorschlag geschickt hast, bestätigen wir ihn
+              oder schlagen eine Alternative vor.
+            </p>
+  
+            <div class="spacer-s"></div>
+            <a class="btn" href="tips.html">Zum Tipp des Monats</a>
+          </aside>
+        </div>
       </div>
-    </div>
-  </main>
-
-  <div id="footer-include"></div>
+    </main>
+  
+    <div id="footer-include"></div>
+  </body>
+  
 
   <!-- Page-scoped enhancement: toggle optional sections -->
   <script>

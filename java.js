@@ -784,3 +784,30 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 })();
+// --- INAYA Kontakt: Callback & Termin-Felder smooth toggling ---
+(function(){
+  var cbCheckbox   = document.getElementById('want-callback');
+  var cbExtra      = document.getElementById('callback-fields');
+  var apptCheckbox = document.getElementById('book-appointment');
+  var apptExtra    = document.getElementById('appointment-fields');
+
+  function toggleBlock(checkbox, block){
+    if (!checkbox || !block) return;
+    block.classList.toggle('is-open', checkbox.checked);
+  }
+
+  if (cbCheckbox && cbExtra) {
+    // initial state on load (e.g. after refresh)
+    toggleBlock(cbCheckbox, cbExtra);
+    cbCheckbox.addEventListener('change', function(){
+      toggleBlock(cbCheckbox, cbExtra);
+    });
+  }
+
+  if (apptCheckbox && apptExtra) {
+    toggleBlock(apptCheckbox, apptExtra);
+    apptCheckbox.addEventListener('change', function(){
+      toggleBlock(apptCheckbox, apptExtra);
+    });
+  }
+})();
