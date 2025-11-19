@@ -642,3 +642,87 @@ document.addEventListener('DOMContentLoaded', function(){
     form.reset();
   });
 });
+
+// --- INAYA Mini-Bot (safe, no crash) ---
+// --- INAYA Mini-Bot (upgraded chat) ---
+(function(){
+  var root = document.querySelector('.inaya-bot');
+  if (!root) return; // no bot on this page
+
+  var toggle      = root.querySelector('.inaya-bot-toggle');
+  var windowEl    = root.querySelector('.inaya-bot-window');
+  var closeBtn    = root.querySelector('.inaya-bot-close');
+  var chat        = root.querySelector('.inaya-bot-chat');
+  var typing      = root.querySelector('.typing-indicator');
+  var questionBtns = root.querySelectorAll('.bot-q');
+
+  if (!toggle || !windowEl || !chat) return;
+
+  function openBot(){
+    windowEl.classList.add('is-open');
+    windowEl.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeBot(){
+    windowEl.classList.remove('is-open');
+    windowEl.setAttribute('aria-hidden', 'true');
+  }
+
+  toggle.addEventListener('click', function(){
+    if (windowEl.classList.contains('is-open')) {
+      closeBot();
+    } else {
+      openBot();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeBot);
+  }
+
+  // Close with ESC
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && windowEl.classList.contains('is-open')) {
+      closeBot();
+    }
+  });
+
+  // Helper: add a chat bubble
+  function addBubble(role, text){
+    if (!chat || !text) return;
+    var div = document.createElement('div');
+    div.className = 'chat-bubble ' + (role === 'user' ? 'chat-bubble--user' : 'chat-bubble--bot');
+    div.innerHTML = text.replace(/\n/g, '<br>');
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  // Show/hide typing indicator
+  function showTyping(show){
+    if (!typing) return;
+    typing.classList.toggle('is-hidden', !show);
+    if (show) {
+      chat.scrollTop = chat.scrollHeight;
+    }
+  }
+
+  // When user clicks a predefined question
+  if (questionBtns.length) {
+    questionBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var answer = btn.getAttribute('data-answer') || '';
+        var qText  = btn.textContent.trim();
+
+        // 1) show user bubble
+        addBubble('user', qText);
+
+        // 2) show typing indicator, then bot answer
+        showTyping(true);
+        setTimeout(function(){
+          showTyping(false);
+          addBubble('bot', answer);
+        }, 450);
+      });
+    });
+  }
+})();
